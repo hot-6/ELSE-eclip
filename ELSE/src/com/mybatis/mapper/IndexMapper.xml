@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="index">
-	<select id="promotionBoard" parameterType="_int" resultType="BoardVO">
-		select (정보들) from tbl_board(board type으로 특정 게시판으로 가줘야할듯) where (각 게시판 게시글 번호 최신에서 4개) = (게시글 번호)
-	</select>
-	
-	<select id="epilogueBoard" parameterType="_int" resultType="BoardVO">
-		select (정보들) from tbl_board(board type으로 특정 게시판으로 가줘야할듯) where (각 게시판 게시글 번호 최신에서 4개) = (게시글 번호)
-	</select>
-	
-	<select id="exchangeBoard" parameterType="_int" resultType="BoardVO">
-		select (정보들) from tbl_board(board type으로 특정 게시판으로 가줘야할듯) where (각 게시판 게시글 번호 최신에서 4개) = (게시글 번호)
-	</select>
 </mapper>

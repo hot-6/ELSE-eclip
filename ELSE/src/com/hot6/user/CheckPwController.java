@@ -12,25 +12,28 @@ import com.hot6.Result;
 import com.hot6.user.dao.UserDAO;
 import com.hot6.user.vo.UserVO;
 
-public class JoinOkController implements Execute{
+public class CheckPwController implements Execute{
+
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServerException {
-		// 500 뜨는데 한글 꺠져서 넣음
-		req.setCharacterEncoding("utf-8");
-		
-		UserDAO userDAO = new UserDAO();
 		Result result = new Result();
+		UserDAO userDAO = new UserDAO();
+		UserVO userVO = new UserVO();
 		HttpSession session = req.getSession();
 		
-		session.setAttribute("userName", req.getParameter("userName"));
-		session.setAttribute("userPhoneNum", req.getParameter("userPhoneNum"));
+		userVO.setUserEmail((String)session.getAttribute("userEmail"));
 		session.setAttribute("userPassword", req.getParameter("userPassword"));
+		userVO.setUserPw((String)session.getAttribute("userPassword"));
 		
-		result.setPath(req.getContextPath() + "/user/termsOfService.us");
+		boolean loginOk = userDAO.checkPw(userVO);
+		
+		if(loginOk) {
+			result.setPath(req.getContextPath() + "/index/main.in");
+		}else {
+			result.setPath(req.getContextPath() + "/user/signupPw.us");
+		}
 		
 		return result;
 	}
+	
 }
-
-//https://creamilk88.tistory.com/154
-//insert 할때, 생성자로 정보 다 떄려박기?

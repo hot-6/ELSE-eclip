@@ -12,25 +12,29 @@ import com.hot6.Result;
 import com.hot6.user.dao.UserDAO;
 import com.hot6.user.vo.UserVO;
 
-public class JoinOkController implements Execute{
+public class CheckEmailController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServerException {
-		// 500 뜨는데 한글 꺠져서 넣음
-		req.setCharacterEncoding("utf-8");
-		
 		UserDAO userDAO = new UserDAO();
 		Result result = new Result();
 		HttpSession session = req.getSession();
 		
-		session.setAttribute("userName", req.getParameter("userName"));
-		session.setAttribute("userPhoneNum", req.getParameter("userPhoneNum"));
-		session.setAttribute("userPassword", req.getParameter("userPassword"));
+		// 이메일 적은 값 가져옴
+		String checkEmailVal = req.getParameter("checkEmail");
+		session.setAttribute("userEmail", checkEmailVal);
 		
-		result.setPath(req.getContextPath() + "/user/termsOfService.us");
+		if(userDAO.checkEmail(checkEmailVal)){ // true = 이메일 없을 때
+			
+			UserVO userVO = new UserVO();
+			userVO.setUserEmail(checkEmailVal);
+			result.setPath(req.getContextPath() + "/user/signup.us");
+			
+		}else { // false = 이메일 있을 때
+
+			result.setPath(req.getContextPath() + "/user/signupPw.us");	
+			
+		}
 		
 		return result;
 	}
 }
-
-//https://creamilk88.tistory.com/154
-//insert 할때, 생성자로 정보 다 떄려박기?

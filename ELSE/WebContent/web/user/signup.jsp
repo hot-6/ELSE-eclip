@@ -44,20 +44,20 @@
                     </div>
                     <!-- 상단(회원가입) 아래 부분 -->
                     <div class="css-yc37i7">
-                        <form method="post" action="${pageContext.request.contextPath}/user/joinOk.me" name="joinForm">
+                        <form method="post" action="${pageContext.request.contextPath}/user/joinOk.us" name="joinForm">
                             <div class="css-11ayfj7">
                                 <label data-testid="Typography" color="var(--theme-palette-colors-gray-600)" for="email" class="css-1isrpua">
                                     이메일
                                 </label>
                             </div>
                             <!-- 전에 입력했던 이메일 그대로 가져오기. value에 자동으로 입력 -->
-                            <input type="email" placeholder="이메일을 입력해주세요." name="email" data-testid="Input_email" class="css-wq6t17" value="hjdo98@naver.com" disabled="">
+                            <input type="email" placeholder="이메일을 입력해주세요." name="userEmail" data-testid="Input_email" class="css-wq6t17" value="${sessionScope.userEmail}">
                             <div class="css-11ayfj7">
                                 <label data-testid="Typography" color="var(--theme-palette-colors-gray-600)" for="email" class="css-1isrpua">
                                     이름
                                 </label>
                             </div>
-                            <input type="text" placeholder="이름을 입력해주세요." name="username" data-testid="Input_username" class="css-wq6t17" value="">
+                            <input type="text" placeholder="이름을 입력해주세요." name="userName" data-testid="Input_username" class="css-wq6t17" value="">
                             <div class="css-11ayfj7">
                                 <label data-testid="Typography" color="var(--theme-palette-colors-gray-600)" for="email" class="css-1isrpua">
                                     휴대폰 번호
@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                                 <div class="css-l9nhxs">
-                                    <input type="text" placeholder="(예시) 01013245768" name="mobile" data-testid="Input_mobile" class="css-wq6t17" value="">
+                                    <input name="userPhoneNum" type="text" placeholder="(예시) 01013245768" name="mobile" data-testid="Input_mobile" class="css-wq6t17" value="">
                                     <button type="button" data-testid="Button" class="css-122uu24" disabled="">
                                         <span data-testid="Typography" color="var(--theme-palette-colors-black-100)" class="css-m3uta">
                                             인증번호 받기
@@ -101,36 +101,33 @@
                                     비밀번호
                                 </label>
                             </div>
-                            <input type="password" placeholder="비밀번호를 입력해주세요." name="password" data-testid="Input_password" class="css-wq6t17" value="">
+                            <input type="password" placeholder="비밀번호를 입력해주세요." name="userPassword" data-testid="Input_password" class="css-wq6t17" value="">
                             <input type="password" placeholder="비밀번호를 다시 한번 입력해주세요." name="passwordConfirm" data-testid="Input_passwordConfirm" class="css-wq6t17" value="">
                             <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1d2ssup">
                                 영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 16자 이하로 입력해주세요.
                             </p>
                             <!-- 동의서 -->
                             <div class="css-hif188">
-                                <div class="css-slacj2"></div>
-                                <input id="term" type="checkbox" name="is_agree_all" data-testid="TermsOption_checkbox_is_agree_all" class="css-31p8kg">
+                            <input type="checkbox" class="checkbox_style termAll">
                                 <div class="css-1smbjja">
-                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-900)" class="css-isn1oz">
+                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-900)" class="css-isn1oz ">
                                         전체 동의
                                     </p>
                                 </div>
                             </div>
                             <hr class="css-15tmq2o">
                             <div class="css-19fyzk7">
-                                <div class="css-slacj2"></div>
-                                <input class="terms" type="checkbox" name="is_above_14" data-testid="TermsOption_checkbox_is_above_14" class="css-31p8kg">
+								<input type="checkbox" class="checkbox_style term">
                                 <div class="css-1smbjja">
-                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-41jd5o">
+                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-41jd5o ">
                                         만 14세 이상입니다. (필수)
                                     </p>
                                 </div>
                             </div>
                             <div class="css-19fyzk7">
-                                <div class="css-slacj2"></div>
-                                <input class="terms" type="checkbox" name="is_terms_conditions" data-testid="TermsOption_checkbox_is_terms_conditions" class="css-31p8kg">
+								<input type="checkbox" class="checkbox_style term">
                                 <div class="css-1smbjja">
-                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-41jd5o">
+                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-41jd5o ">
                                         oneID 이용약관 동의 (필수)
                                     </p>
                                 </div>
@@ -139,10 +136,9 @@
                                 </a>
                             </div>
                             <div class="css-19fyzk7">
-                                <div class="css-slacj2"></div>
-                                <input class="terms" type="checkbox" name="is_collect_information" data-testid="TermsOption_checkbox_is_collect_information" class="css-31p8kg">
+                            <input type="checkbox" class="checkbox_style term">
                                 <div class="css-1smbjja">
-                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-41jd5o">
+                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-41jd5o ">
                                         개인정보 및 수집 이용 동의 (필수)
                                     </p>
                                 </div>
@@ -150,12 +146,15 @@
                                     자세히
                                 </a>
                             </div>
+                            <div class="test_div" >
+                                ____________________________________________________
+                            </div>
                             <!-- 하단 : 가입하기 -->
                             
                             <div class="css-1cusgjg">
                                 <div class="css-19u2tlp"></div>
                                 <div class="css-agh674"></div>
-                                <button onclick="send()" type="submit" disabled="" data-testid="Button" class="css-c61xw1">
+                                <button onclick="send()" type="submit" data-testid="Button" class="css-c61xw1" id="activeAll" disabled>
                                     <span data-testid="Typography" color="var(--theme-palette-colors-black-100)" class="css-m3uta">
                                         가입하기
                                     </span>
@@ -168,4 +167,12 @@
         </div>
     </div>
 </body>
+
+<!-- script -->
+<script src="${pageContext.request.contextPath}/assets/js/user/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/user/browser.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/user/breakpoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/user/buttonActive.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/user/termcheck.js"></script>
+
 </html>

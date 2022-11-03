@@ -18,5 +18,7 @@
 	<classpathentry kind="lib" path="C:/Users/i1t28/OneDrive/문서/GitHub/ELSE-eclip/ELSE/WebContent/WEB-INF/lib/mybatis-3.5.11.jar"/>
 	<classpathentry kind="lib" path="C:/Users/i1t28/OneDrive/문서/GitHub/ELSE-eclip/ELSE/WebContent/WEB-INF/lib/mysql-connector-java-8.0.29.jar"/>
 	<classpathentry kind="lib" path="C:/Users/i1t28/OneDrive/문서/GitHub/ELSE-eclip/ELSE/WebContent/WEB-INF/lib/standard.jar"/>
+	<classpathentry kind="lib" path="C:/web_1900_bum/jsp/resource/lip/cos.jar"/>
+	<classpathentry kind="lib" path="C:/web_1900_bum/jsp/resource/lip/org.json.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

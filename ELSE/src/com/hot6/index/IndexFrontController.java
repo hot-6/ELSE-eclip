@@ -31,9 +31,12 @@ public class IndexFrontController extends HttpServlet{
 			// ..
 		}else if(target.equals("/index/exchangeBoard.me")) {
 			// ..
+		}else if(target.equals("/index/main.in")) {
+			
+			result = new Result();
+			result.setPath("/web/index/main.jsp");
+			
 		}
-		// 고객센터에 대해서도 뭔가가 있을 거 같은데 생각이 안나네요
-		
 		
 		
 		if(result != null) {

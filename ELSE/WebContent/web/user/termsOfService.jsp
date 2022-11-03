@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/login/termsOfService.css">
 </head>
 <body>
+
     <div class="Modal_Modal__root__lNnQN">
         <div class="Modal_Modal__root__backdrop__ENcJl"></div>
         <div class="Modal_Modal__root__body__1_X6A TermsModal_TermsModal__modal__2AlvO">
@@ -28,7 +29,7 @@
                     <h4>품앗이 이용 약관</h4>
                 </div>
             </div>
-            <form>
+            <form action="${pageContext.request.contextPath}/user/allTermsOk.us">
                 <div class="ModalContent_ModalContent__root__1Z9d1 TermsModal_TermsModal__content___fAMk">
                     <div class="ServiceInfo_ServiceInfo__Cm2i7">
                         <div class="ServiceInfo_ServiceInfo__logo__9uzqZ">
@@ -39,7 +40,7 @@
                     <!-- 이메일 계정 설정 -->
                     <a class="AccountSettingsButton_AccountSettingsButton__tJTEv" href="https://id.wanted.jobs/profile/myinfo" target="_blank" rel="noreferrer">
                         <img src="https://static.wanted.co.kr/images/profile_default.png" alt="user thumbnail" class="AccountSettingsButton_AccountSettingsButton__img__y0yJE">
-                        <span class="AccountSettingsButton_AccountSettingsButton__email__YrL5v">hjdo98@naver.com</span>
+                        <span class="AccountSettingsButton_AccountSettingsButton__email__YrL5v">${sessionScope.userEmail}</span>
                         <div class="AccountSettingsButton_AccountSettingsButton__buttonWrapper__j3VmF">
                             <span>계정 설정</span>
                             <span class="SvgIcon_SvgIcon__root__8vwon AccountSettingsButton_AccountSettingsButton__icon__56Qki">
@@ -134,7 +135,7 @@
                 </div>
                 <!-- 하단 : 동의하고 계속하기 버튼 -->
                 <div class="ModalActions_ModalActions__root__8OUZk TermsModal_TermsModal__actions__YQiY3">
-                    <button class="Button_Button__root__V1ie3 Button_Button__contained__toUI5 undefined Button_Button__sizeMedium__k0A1w Button_Button__fullWidth__RU4tf TermsModal_TermsModal__button__OuyGk" type="submit" data-attribute-id="signup__agreeTerms__continue" disabled="">
+                    <button class="Button_Button__root__V1ie3 Button_Button__contained__toUI5 undefined Button_Button__sizeMedium__k0A1w Button_Button__fullWidth__RU4tf TermsModal_TermsModal__button__OuyGk" type="submit" data-attribute-id="signup__agreeTerms__continue">
                         <span class="Button_Button__label__1Kk0v">
                             동의하고 계속하기
                         </span>

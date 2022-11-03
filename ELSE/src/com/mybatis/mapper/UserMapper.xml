@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
-	<select id="checkId" parameterType="string" resultType="_int">
-		select count(user_number) from tbl_user where user_id = #{userId}
+	<select id="checkEmail" parameterType="string" resultType="_int">
+		select count(user_email) from tbl_user
+		where user_email = #{userEmail}
 	</select>
 	
-	<insert id="join" parameterType="userVO">
-		insert into tbl_user (user_email, user_name, user_phonenum, user_password, user_passwordcheck)
-		values #{userEmail},#{userName},#{userPhoneNum},#{userPassword}, #{userPasswordCheck}
+	<insert id="allTermsOk" parameterType="userVO">
+		insert into tbl_user (user_email, user_name, user_phonenum, user_password)
+		values (#{userEmail}, #{userName}, #{userPhonenum}, #{userPw})
 	</insert>
 	
-	<select id="loginOk" parameterType="string" resultType="_int">
-		select count(user_number) from tbl_userd
-		where user_id = #{userId}
+	<select id="checkPw" parameterType="userVO" resultType="_int">
+		select count(user_password) from tbl_user
+		where user_password = #{userPw} and user_email = #{userEmail}
+	</select>
+	
+	<select id="getEmail" parameterType="userVO" resultType="_int">
+		select count(user_email) from tbl_user
+		where user_password = #{userPw} and user_email = #{userEmail)
 	</select>
 </mapper>
 

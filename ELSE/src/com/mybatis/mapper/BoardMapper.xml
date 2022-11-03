@@ -1,53 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board">
-	<insert id="exchangeRegisterOk" parameterType="BoardExchangeVO">
-		insert into tbl_exchange (이름,작성시간,헤더,메인텍스트,난이도,지역,시간)
-		values #{userNumber},#{exchangeTextTime},#{exchangeHeaderName},#{exchangeMainText},#{exchangeWorkHard},#{exchangeWorkArea},#{exchangeWorkTime}
-	</insert>
-	
-	<update id="exchangeModifyOk">
-		update tbl_exchange 
-		set (작성시간=sysdate),(헤더=(기존내용이default)),(메인텍스트=(기존내용이default)),(난이도=(기존내용이default)),(지역=(기존내용이default)),(시간=(기존내용이default))
-		where (품앗이 게시글 번호)
-	</update>
-	
-	<delete id="exchangeDeletaOk">
-		delete from tbl_exchange
-		where (품앗이 게시글 번호 = (클릭한 게시글 번호))
-	</delete>
-	
-	<insert id="promoteRegisterOk" parameterType="BoardExchangeVO">
-		insert into tbl_promote (이름,작성시간,헤더,메인텍스트)
-		values #{userNumber},#{promoteTextTime},#{promoteHeaderName},#{promoteMainText}#{exchangeWorkHard}
-	</insert>
-	
-	<update id="promoteModifyOk">
-		update tbl_promote 
-		set (작성시간=sysdate),(헤더=(기존내용이default)),(메인텍스트=(기존내용이default))
-		where (홍보 게시글 번호)
-	</update>
-	
-	<delete id="promoteDeletaOk">
-		delete from tbl_promote
-		where (홍보 게시글 번호 = (클릭한 게시글 번호))
-	</delete>
-	
-	<insert id="epilogueRegisterOk" parameterType="BoardExchangeVO">
-		insert into tbl_epilogue (이름,작성시간,헤더,메인텍스트)
-		values #{userNumber},#{epilogueTextTime},#{epilogueHeaderName},#{epilogueMainText}
-	</insert>
-	
-	<update id="epilogueModifyOk">
-		update tbl_epilogue 
-		set (작성시간=sysdate),(헤더=(기존내용이default)),(메인텍스트=(기존내용이default))
-		where (인증후기 게시글 번호)
-	</update>
-	
-	<delete id="epilogueDeletaOk">
-		delete from tbl_epilogue
-		where (인증후기 게시글 번호 = (클릭한 게시글 번호))
-	</delete>
 </mapper>
 
 

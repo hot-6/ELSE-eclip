@@ -12,15 +12,20 @@ public class UserDAO {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 	
-	public boolean checkId(String userId) {
-		return (Integer)sqlSession.selectOne("user.checkId", userId) == 0;
+	public boolean checkEmail(String userEmail) {
+		return (Integer)sqlSession.selectOne("user.checkEmail", userEmail) == 0;
+		// true = 이메일 없음 false = 이메일 있음
 	}
 	
-	public void join(UserVO userVO) {
-		sqlSession.insert("user.join", userVO);
+	public void allTermsOk(UserVO userVO) {
+		sqlSession.insert("user.allTermsOk", userVO);
 	}
 	
-	public boolean loginOk(String userId) {
-		return (Integer)sqlSession.selectOne("user.loginOk", userId) == 0;
+	public boolean checkPw(UserVO userVO) {
+		return (Integer)sqlSession.selectOne("user.checkPw", userVO) == 1;
+	}
+	
+	public boolean getEmail(UserVO userVO) {
+		return (Integer)sqlSession.selectOne("user.getEmail", userVO) == 1;
 	}
 }

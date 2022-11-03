@@ -17,7 +17,7 @@
   
   <servlet-mapping>
   	<servlet-name>User</servlet-name>
-  	<url-pattern>*.me1</url-pattern>
+  	<url-pattern>*.us</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -57,6 +57,6 @@
   
   <servlet-mapping>
   	<servlet-name>Index</servlet-name>
-  	<url-pattern>*.me5</url-pattern>
+  	<url-pattern>*.in</url-pattern>
   </servlet-mapping>  
 </web-app>

@@ -264,3 +264,17 @@ option {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, var(--theme-palette-colors-contents-bg) 100%);
     z-index: -1;
 }
+
+.test_div {
+    color: var(--theme-palette-colors-bluegray-200);
+}
+
+.checkbox_style {
+    width: 18px;
+    height: 18px;
+    border: 1px solid hotpink;
+}
+
+#activeAll {
+	disabled:"";
+}

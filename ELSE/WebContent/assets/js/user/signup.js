@@ -29,3 +29,4 @@ function send() {
 	}	
 	joinForm.submit();
 }
+

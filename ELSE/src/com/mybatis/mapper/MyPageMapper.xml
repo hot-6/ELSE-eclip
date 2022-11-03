@@ -1,22 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mypage">
-	<select id="userInfo" parameterType="_int" resultType="UserVO">
-		select * from tbl_user where (로그인된 유저 번호) = (유저 번호)
-	</select>
-	
-	<select id="applyElse" parameterType="_int" resultType="BoardVO">
-		select (글제목, 장소, 날짜, ...) from tbl_board
-		where (유저가 신청한 테이블 번호) = (테이블 번호)
-	</select>
-	
-	<select id="interestElse" parameterType="_int" resultType="BoardVO">
-		select (글제목, 장소, 날짜, ...) from tbl_board
-		where (유저가 관심보인 테이블 번호) = (테이블 번호)
-	</select>
-	
-	<select id="cancelApplyElse" parameterType="_int" resultType="BoardVO">
-		select (글제목, 장소, 날짜, ...) from tbl_board
-		where (유저가 취소한 테이블 번호) = (테이블 번호)
-	</select>
 </mapper>

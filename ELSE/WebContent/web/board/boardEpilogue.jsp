@@ -29,7 +29,7 @@
 
     <!--폰트관련-->
 
-    <link rel="stylesheet" href="../css/boardEpilogue.css" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/board/boardEpilogue.css" crossorigin="anonymous"/>
     <!-- 게시판 관련 css -->
     <link
       rel="stylesheet"
@@ -40,9 +40,9 @@
 
  <!--header 관련 css-->
     
- <link rel="stylesheet" href="../main/css/header.css">
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index/header.css">
  <!--footer 관련 css-->
- <link href="../main/css/footer.css" rel="stylesheet">
+ <link href="${pageContext.request.contextPath}/assets/css/index/footer.css" rel="stylesheet">
 
    <!--폰트 관련 css ***** 폰트 관련 css는 한 번만 적용-->
 <link
@@ -76,6 +76,7 @@
                           <a href="/" class="">홈</a>
                       </li>
                       <!--selectNav는 나중에 적용-->
+                      
                       <li class="selectedNav">
                           <a href="" class="">품앗이 게시판</a>
                       </li>
@@ -110,7 +111,7 @@
                               <button class="signUpButton" type="button">회원가입/로그인</button>
                           </li>
                           <li class="leftDivision">
-                              <a class="dashboardButton" href="/dashboard">기업 서비스11111111111111111111111111</a>
+                              <a class="dashboardButton" href="/dashboard">기업 서비스222222222222222222</a>
                           </li>                        
                       </ul>
                   </aside>
@@ -177,7 +178,7 @@
   
                     <li>
                       <div class="list_card">
-                        <a href="">
+                        <a href="${pageContext.request.contextPath}/user/signup.us">
                           <header style="background-image: url(../img/epliloge3.png)">
                       
                             <button class="bookmarkBtn" type="button"></button>

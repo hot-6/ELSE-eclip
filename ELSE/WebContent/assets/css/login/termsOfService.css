@@ -546,3 +546,18 @@ button[disabled], html input[disabled] {
     background-color: #f2f4f7;
     color: #ccc;
 }
+
+.checkbox_style {
+    width: 18px;
+    height: 18px;
+    border: 1px solid hotpink;
+    background-color: red;
+}
+
+.termCheckDiv {
+	display: flex;
+   	align-items: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}

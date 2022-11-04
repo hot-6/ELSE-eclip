@@ -51,13 +51,13 @@
                                 </label>
                             </div>
                             <!-- 전에 입력했던 이메일 그대로 가져오기. value에 자동으로 입력 -->
-                            <input type="email" placeholder="이메일을 입력해주세요." name="userEmail" data-testid="Input_email" class="css-wq6t17" value="${sessionScope.userEmail}">
+                            <input type="email" placeholder="이메일을 입력해주세요." name="userEmail" data-testid="Input_email" class="css-wq6t17" value="${sessionScope.userEmail}"  disabled>
                             <div class="css-11ayfj7">
                                 <label data-testid="Typography" color="var(--theme-palette-colors-gray-600)" for="email" class="css-1isrpua">
                                     이름
                                 </label>
                             </div>
-                            <input type="text" placeholder="이름을 입력해주세요." name="userName" data-testid="Input_username" class="css-wq6t17" value="">
+                            <input id="userName" type="text" placeholder="이름을 입력해주세요." name="userName" data-testid="Input_username" class="css-wq6t17" value="">
                             <div class="css-11ayfj7">
                                 <label data-testid="Typography" color="var(--theme-palette-colors-gray-600)" for="email" class="css-1isrpua">
                                     휴대폰 번호
@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                                 <div class="css-l9nhxs">
-                                    <input name="userPhoneNum" type="text" placeholder="(예시) 01013245768" name="mobile" data-testid="Input_mobile" class="css-wq6t17" value="">
+                                    <input id="userPhoneNum" name="userPhoneNum" type="text" placeholder="(예시) 01013245768" name="mobile" data-testid="Input_mobile" class="css-wq6t17" value="">
                                     <button type="button" data-testid="Button" class="css-122uu24" disabled="">
                                         <span data-testid="Typography" color="var(--theme-palette-colors-black-100)" class="css-m3uta">
                                             인증번호 받기
@@ -101,8 +101,9 @@
                                     비밀번호
                                 </label>
                             </div>
-                            <input type="password" placeholder="비밀번호를 입력해주세요." name="userPassword" data-testid="Input_password" class="css-wq6t17" value="">
-                            <input type="password" placeholder="비밀번호를 다시 한번 입력해주세요." name="passwordConfirm" data-testid="Input_passwordConfirm" class="css-wq6t17" value="">
+                            <input type="password" id="checkPw" placeholder="비밀번호를 입력해주세요." name="userPassword" data-testid="Input_password" class="css-wq6t17" value="">
+                            <input type="password" id="checkPwPw" placeholder="비밀번호를 다시 한번 입력해주세요." name="passwordConfirm" data-testid="Input_passwordConfirm" class="css-wq6t17" value="">
+                            <span id="checkResult"></span>
                             <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1d2ssup">
                                 영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 16자 이하로 입력해주세요.
                             </p>
@@ -172,7 +173,7 @@
 <script src="${pageContext.request.contextPath}/assets/js/user/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/user/browser.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/user/breakpoints.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/user/buttonActive.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/user/checkPw.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/user/termcheck.js"></script>
 
 </html>

@@ -53,13 +53,12 @@
                     <!-- 약관 동의서 -->
                     <div class="Agreement_Agreement__wrapper__AsfFo">
                         <div class="style_wrapper__yBOLk Agreement_Agreement__checkboxAll__p_wxN">
-                            <div class="style_check__N8T_o">
-                                <svg width="24" height="24" color="#ececec" viewBox="0 0 24 24">
-                                    <path fill="currentColor" d="M18.75 21.75H5.25a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v13.5a3 3 0 0 1-3 3zm0-1.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v13.5a1.5 1.5 0 0 0 1.5 1.5h13.5z"></path>
-                                </svg>
+                        <input type="checkbox" class="checkbox_style termAll">
+                         	<div class="termCheckDiv">
+		                    	<input id="termAll" class="checkbox_style" type="checkbox" name="allAgreement">
                             </div>
                             <div class="style_label__Qjlun">
-                                <input type="checkbox" name="allAgreement">전체 동의
+                                전체 동의
                             </div>
                         </div>
                         <hr class="Divider_Divider__root__f2LD0">
@@ -70,7 +69,7 @@
                                 </svg>
                             </div>
                             <div class="style_label__Qjlun">
-                                <input type="checkbox" name="acceptTerms">원티드 이용 약관 동의 (필수)
+                                <input class="term" type="checkbox" name="acceptTerms">원티드 이용 약관 동의 (필수)
                                 <div class="Agreement_Agreement__linkWrapper__64oW6">
                                     <a href="https://help.wanted.co.kr/hc/ko/articles/360035844551" rel="noopener noreferrer" target="_blank" class="Agreement_Agreement__link__BZIYd">자세히</a>
                                 </div>
@@ -83,7 +82,7 @@
                                 </svg>
                             </div>
                             <div class="style_label__Qjlun">
-                                <input type="checkbox" name="acceptPrivacy">개인정보 수집 및 이용 동의 (필수)
+                                <input class="term" type="checkbox" name="acceptPrivacy">개인정보 수집 및 이용 동의 (필수)
                                 <div class="Agreement_Agreement__linkWrapper__64oW6">
                                     <a href="https://help.wanted.co.kr/hc/ko/articles/360040127872" rel="noopener noreferrer" target="_blank" class="Agreement_Agreement__link__BZIYd">자세히</a>
                                 </div>
@@ -96,7 +95,7 @@
                                 </svg>
                             </div>
                             <div class="style_label__Qjlun">
-                                <input type="checkbox" name="allNotificationAgreement">채용 소식, 커리어 콘텐츠, 이벤트 등 맞춤 정보 받기
+                                <input class="termPlusAll" type="checkbox" name="allNotificationAgreement">채용 소식, 커리어 콘텐츠, 이벤트 등 맞춤 정보 받기
                             </div>
                         </div>
                         <div class="Agreement_Agreement__notificationWrapper__1OhHR">
@@ -107,7 +106,7 @@
                                     </svg>
                                 </div>
                                 <div class="style_label__Qjlun">
-                                    <input type="checkbox" name="acceptEventEmail">이메일
+                                    <input class="termPlus" type="checkbox" name="acceptEventEmail">이메일
                                 </div>
                             </div>
                             <div class="style_wrapper__yBOLk Agreement_Agreement__checkbox__gNuLN">
@@ -117,7 +116,7 @@
                                     </svg>
                                 </div>
                                 <div class="style_label__Qjlun">
-                                    <input type="checkbox" name="acceptEventSms">문자 메시지
+                                    <input class="termPlus" type="checkbox" name="acceptEventSms">문자 메시지
                                 </div>
                             </div>
                             <div class="style_wrapper__yBOLk Agreement_Agreement__checkbox__gNuLN">
@@ -127,7 +126,7 @@
                                     </svg>
                                 </div>
                                 <div class="style_label__Qjlun">
-                                    <input type="checkbox" name="acceptEventPush">앱 푸시
+                                    <input class="termPlus" type="checkbox" name="acceptEventPush">앱 푸시
                                 </div>
                             </div>
                         </div>
@@ -145,4 +144,6 @@
         </div>
     </div>
 </body>
+<script src="${pageContext.request.contextPath}/assets/js/user/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/user/termPlusCheck.js"></script>
 </html>

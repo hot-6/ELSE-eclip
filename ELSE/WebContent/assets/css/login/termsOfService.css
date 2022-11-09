@@ -402,6 +402,7 @@ svg:not(:root) {
     flex: 1 1;
     font-size: 15px;
     color: #666;
+    margin-left: 3px;
 }
 
 .style_wrapper__yBOLk input[type=checkbox] {
@@ -545,4 +546,19 @@ button[disabled], html input[disabled] {
 .Button_Button__contained__toUI5:disabled {
     background-color: #f2f4f7;
     color: #ccc;
+}
+
+.checkbox_style {
+    width: 18px;
+    height: 18px;
+    border: 1px solid hotpink;
+    background-color: red;
+}
+
+.termCheckDiv {
+	display: flex;
+   	align-items: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }

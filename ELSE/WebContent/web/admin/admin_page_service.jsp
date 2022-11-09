@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,10 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="/src/admin/css_admin/admin_page_service.css"
+      href="${pageContext.request.contextPath}/assets/css/admin/admin_page_service.css"
     />
     <link href="/website/css/uicons-outline-rounded.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/src/admin/css_admin/admin_page_same.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/admin_page_same.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -69,28 +70,30 @@
                     </li>
                   </ul>
                 </div>
-                
+                <c:choose>
+			    	<c:when test="${not empty boards and fn:length(boards) > 0}">
+					<c:forEach var="board" items="${boards}">
                 <div class="notice_info_one">
                   <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
+                    <li class="notice_number user_info_title content_text_align">
+                      <span><c:out value="${board.getIqId()}"/></span>
                     </li>
                     <li
                       class="notice_title user_info_title content_text_align_left"
                     >
-                      <span>제목제목제목제목제목제목</span>
+                      <span><a href = "${pageContext.request.contextPath}/admin/boardDetail.adm?no=${board.getIqId()}">
+                      <c:out value="${board.getIqTextName()}"/>
+                      <a></a></span>
                     </li>
                     <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
+                      <span><c:out value="${board.getUserName()}"/></span>
                     </li>
                     <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
+                      <span><c:out value="${board.getIqTextTime()}"/></span>
                     </li>
                     <li class="answer_yesno">
                         <div class="answer_no_div">
-                            <div>N</div>
+                            <div><c:out value="${board.getIqAnswerYN()}"/></div>
                         </div>
                     </li>
                     <li class="btn_qna_answer">
@@ -98,400 +101,15 @@
                     </li>
                     </ul>
                 </div>
-                <div class="notice_info_one">
-                  <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
-                    </li>
-                    <li
-                      class="notice_title user_info_title content_text_align_left"
-                    >
-                      <span>제목제목제목제목제목제목</span>
-                    </li>
-                    <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
-                    </li>
-                    <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
-                    </li>
-                    <li class="answer_yesno">
-                        <div class="answer_no_div">
-                            <div>N</div>
-                        </div>
-                    </li>
-                    <li class="btn_qna_answer">
-                        <input class="btn_write" type="button" value="답변하기" />
-                    </li>
-                    </ul>
-                </div>
-                <div class="notice_info_one">
-                  <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
-                    </li>
-                    <li
-                      class="notice_title user_info_title content_text_align_left"
-                    >
-                      <span>제목제목제목제목제목제목</span>
-                    </li>
-                    <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
-                    </li>
-                    <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
-                    </li>
-                    <li class="answer_yesno">
-                        <div class="answer_no_div">
-                            <div>N</div>
-                        </div>
-                    </li>
-                    <li class="btn_qna_answer">
-                        <input class="btn_write" type="button" value="답변하기" />
-                    </li>
-                    </ul>
-                </div>
-                <div class="notice_info_one">
-                  <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
-                    </li>
-                    <li
-                      class="notice_title user_info_title content_text_align_left"
-                    >
-                      <span>제목제목제목제목제목제목</span>
-                    </li>
-                    <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
-                    </li>
-                    <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
-                    </li>
-                    <li class="answer_yesno">
-                        <div class="answer_no_div">
-                            <div>N</div>
-                        </div>
-                    </li>
-                    <li class="btn_qna_answer">
-                        <input class="btn_write" type="button" value="답변하기" />
-                    </li>
-                    </ul>
-                </div>
-                <div class="notice_info_one">
-                  <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
-                    </li>
-                    <li
-                      class="notice_title user_info_title content_text_align_left"
-                    >
-                      <span>제목제목제목제목제목제목</span>
-                    </li>
-                    <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
-                    </li>
-                    <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
-                    </li>
-                    <li class="answer_yesno">
-                        <div class="answer_no_div">
-                            <div>N</div>
-                        </div>
-                    </li>
-                    <li class="btn_qna_answer">
-                        <input class="btn_write" type="button" value="답변하기" />
-                    </li>
-                    </ul>
-                </div>
-                <div class="notice_info_one">
-                  <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
-                    </li>
-                    <li
-                      class="notice_title user_info_title content_text_align_left"
-                    >
-                      <span>제목제목제목제목제목제목</span>
-                    </li>
-                    <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
-                    </li>
-                    <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
-                    </li>
-                    <li class="answer_yesno">
-                        <div class="answer_no_div">
-                            <div>N</div>
-                        </div>
-                    </li>
-                    <li class="btn_qna_answer">
-                        <input class="btn_write" type="button" value="답변하기" />
-                    </li>
-                    </ul>
-                </div>
-                <div class="notice_info_one">
-                  <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
-                    </li>
-                    <li
-                      class="notice_title user_info_title content_text_align_left"
-                    >
-                      <span>제목제목제목제목제목제목</span>
-                    </li>
-                    <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
-                    </li>
-                    <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
-                    </li>
-                    <li class="answer_yesno">
-                        <div class="answer_no_div">
-                            <div>N</div>
-                        </div>
-                    </li>
-                    <li class="btn_qna_answer">
-                        <input class="btn_write" type="button" value="답변하기" />
-                    </li>
-                    </ul>
-                </div>
-                <div class="notice_info_one">
-                  <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
-                    </li>
-                    <li
-                      class="notice_title user_info_title content_text_align_left"
-                    >
-                      <span>제목제목제목제목제목제목</span>
-                    </li>
-                    <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
-                    </li>
-                    <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
-                    </li>
-                    <li class="answer_yesno">
-                        <div class="answer_no_div">
-                            <div>N</div>
-                        </div>
-                    </li>
-                    <li class="btn_qna_answer">
-                        <input class="btn_write" type="button" value="답변하기" />
-                    </li>
-                    </ul>
-                </div>
-                <div class="notice_info_one">
-                  <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
-                    </li>
-                    <li
-                      class="notice_title user_info_title content_text_align_left"
-                    >
-                      <span>제목제목제목제목제목제목</span>
-                    </li>
-                    <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
-                    </li>
-                    <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
-                    </li>
-                    <li class="answer_yesno">
-                        <div class="answer_yes_div">
-                            <div>Y</div>
-                        </div>
-                    </li>
-                    <li class="btn_qna_answer">
-                        <input class="btn_write" type="button" value="답변하기" />
-                    </li>
-                    </ul>
-                </div>
-                <div class="notice_info_one">
-                  <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
-                    </li>
-                    <li
-                      class="notice_title user_info_title content_text_align_left"
-                    >
-                      <span>제목제목제목제목제목제목</span>
-                    </li>
-                    <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
-                    </li>
-                    <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
-                    </li>
-                    <li class="answer_yesno">
-                        <div class="answer_yes_div">
-                            <div>Y</div>
-                        </div>
-                    </li>
-                    <li class="btn_qna_answer">
-                        <input class="btn_write" type="button" value="답변하기" />
-                    </li>
-                    </ul>
-                </div>
-                <div class="notice_info_one">
-                  <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
-                    </li>
-                    <li
-                      class="notice_title user_info_title content_text_align_left"
-                    >
-                      <span>제목제목제목제목제목제목</span>
-                    </li>
-                    <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
-                    </li>
-                    <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
-                    </li>
-                    <li class="answer_yesno">
-                        <div class="answer_yes_div">
-                            <div>Y</div>
-                        </div>
-                    </li>
-                    <li class="btn_qna_answer">
-                        <input class="btn_write" type="button" value="답변하기" />
-                    </li>
-                    </ul>
-                </div>
-                <div class="notice_info_one">
-                  <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
-                    </li>
-                    <li
-                      class="notice_title user_info_title content_text_align_left"
-                    >
-                      <span>제목제목제목제목제목제목</span>
-                    </li>
-                    <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
-                    </li>
-                    <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
-                    </li>
-                    <li class="answer_yesno">
-                        <div class="answer_yes_div">
-                            <div>Y</div>
-                        </div>
-                    </li>
-                    <li class="btn_qna_answer">
-                        <input class="btn_write" type="button" value="답변하기" />
-                    </li>
-                    </ul>
-                </div>
-                <div class="notice_info_one">
-                  <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
-                    </li>
-                    <li
-                      class="notice_title user_info_title content_text_align_left"
-                    >
-                      <span>제목제목제목제목제목제목</span>
-                    </li>
-                    <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
-                    </li>
-                    <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
-                    </li>
-                    <li class="answer_yesno">
-                        <div class="answer_yes_div">
-                            <div>Y</div>
-                        </div>
-                    </li>
-                    <li class="btn_qna_answer">
-                        <input class="btn_write" type="button" value="답변하기" />
-                    </li>
-                    </ul>
-                </div>
-                <div class="notice_info_one">
-                  <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
-                    </li>
-                    <li
-                      class="notice_title user_info_title content_text_align_left"
-                    >
-                      <span>제목제목제목제목제목제목</span>
-                    </li>
-                    <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
-                    </li>
-                    <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
-                    </li>
-                    <li class="answer_yesno">
-                        <div class="answer_yes_div">
-                            <div>Y</div>
-                        </div>
-                    </li>
-                    <li class="btn_qna_answer">
-                        <input class="btn_write" type="button" value="답변하기" />
-                    </li>
-                    </ul>
-                </div>
-                <div class="notice_info_one">
-                  <ul class="notice_info">
-                    <li
-                      class="notice_number user_info_title content_text_align"
-                    >
-                      <span>번호</span>
-                    </li>
-                    <li
-                      class="notice_title user_info_title content_text_align_left"
-                    >
-                      <span>제목제목제목제목제목제목</span>
-                    </li>
-                    <li class="notice_writer user_info_title board_title">
-                      <span>작성자</span>
-                    </li>
-                    <li class="notice_date user_info_title content_text_align">
-                      <span>작성 날짜</span>
-                    </li>
-                    <li class="answer_yesno">
-                        <div class="answer_yes_div">
-                            <div>Y</div>
-                        </div>
-                    </li>
-                    <li class="btn_qna_answer">
-                        <input class="btn_write" type="button" value="답변하기" />
-                    </li>
-                    </ul>
-                </div>
-                
-                
+                </c:forEach>
+				</c:when>
+				<c:otherwise>
+					<tr>
+						<td colspan="5" align="center">등록된 게시물이 없습니다.</td>
+					</tr>
+				</c:otherwise>
+				</c:choose>
+				   
                 <div class="page_number">
                   <ul class="page_number_ul">
                     <div class="page_number_div">
@@ -516,12 +134,13 @@
         </div>
       </div>
 
-      <div class="menu">
-        <div class="logo_img"><a href="/src/admin/html_admin/admin_page_main.html"><div>ELSE</div></a></div>
+
+        <div class="menu">
+        <div class="logo_img"><a href="${pageContext.request.contextPath}/admin/main.adm"><div>ELSE</div></a></div>
         <div class="menu_admin">
           <div>
             <a href="#">
-              <img src="/src/admin/img_admin/home.png" />
+              <img src="${pageContext.request.contextPath}/assets/images/home.png" />
               <div>사이트 바로가기</div>
             </a>
           </div>
@@ -529,22 +148,11 @@
         <div class="manage_list_div">
           <ul class="manage_list">
             <li class="list_li">
-              <a href="admin_page_request.html">
+              <a href="${pageContext.request.contextPath}/admin/user.adm">
                 <div>
                   <img
                     class="manage_list_img"
-                    src="/src/admin/img_admin/browser.png"
-                  />
-                </div>
-                <span>요청 관리</span>
-              </a>
-            </li>
-            <li class="list_li">
-              <a href="admin_page_user.html">
-                <div>
-                  <img
-                    class="manage_list_img"
-                    src="/src/admin/img_admin/user.png"
+                    src="${pageContext.request.contextPath}/assets/images/user.png"
                   />
                 </div>
                 <span>이용자 관리</span>
@@ -555,27 +163,27 @@
                 <div>
                   <img
                     class="manage_list_img"
-                    src="/src/admin/img_admin/ballot.png"
+                    src="${pageContext.request.contextPath}/assets/images/ballot.png"
                   />
                 </div>
                 <span>게시글 관리</span>
                 <img
                   class="arrow_down"
-                  src="/src/admin/img_admin/angle-down1.png"
+                  src="${pageContext.request.contextPath}/assets/images/angle-down1.png"
                 />
                 <ul class="toggle_menu">
                   <li>
-                    <a href="admin_page_board.html">
+                    <a href="${pageContext.request.contextPath}/admin/board.adm">
                       <div>품앗이 게시판</div>
                     </a>
                   </li>
                   <li>
-                    <a href="admin_page_board_promotion.html">
+                    <a href="${pageContext.request.contextPath}/admin/promotion.adm">
                       <div>홍보 게시판</div>
                     </a>
                   </li>
                   <li>
-                    <a href="admin_page_board_review.html">
+                    <a href="${pageContext.request.contextPath}/admin/review.adm">
                       <div>인증, 후기 게시판</div>
                     </a>
                   </li>
@@ -587,29 +195,29 @@
                 <div>
                   <img
                     class="statis_list_img"
-                    src="/src/admin/img_admin/statistic.png"
+                    src="${pageContext.request.contextPath}/assets/images/statistic.png"
                   />
                 </div>
                 <span>통계</span>
               </a>
             </li>
             <li class="list_li">
-              <a href="/src/admin/html_admin/admin_page_service.html">
+              <a href="${pageContext.request.contextPath}/admin/service.adm">
                 <div>
                   <img
                     class="manage_list_img"
-                    src="/src/admin/img_admin/comments.png"
+                    src="${pageContext.request.contextPath}/assets/images/comments.png"
                   />
                 </div>
                 <span>고객 센터</span>
               </a>
             </li>
             <li class="list_li list_admin_notice">
-              <a href="">
+              <a href="${pageContext.request.contextPath}/admin/notice.adm">
                 <div>
                   <img
                     class="manage_list_img"
-                    src="/src/admin/img_admin/exclamation.png"
+                    src="${pageContext.request.contextPath}/assets/images/exclamation.png"
                   />
                 </div>
                 <span>관리자 공지</span>
@@ -620,5 +228,5 @@
       </div>
     </div>
   </body>
-  <script src="/src/admin/js_admin/admin_page_main.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/admin_page_main.js"></script>
 </html>

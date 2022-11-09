@@ -33,7 +33,7 @@
                     </div>
                     <!-- 상단(품앗이 oneID) 아래 부분 -->
                     <div class="css-yc37i7">
-                        <form action="${pageContext.request.contextPath}/user/checkPw.us">
+                        <form action="${pageContext.request.contextPath}/user/checkPw.us" method="post">
                             <h1 data-testid="Typography" color="var(--theme-palette-colors-black-100)" class="css-1hjm992">
                                 하나의 계정으로<br>
                                 더욱 편리하게
@@ -48,9 +48,10 @@
                                 </label>
                             </div>
                             <!-- 수정 필요 : 조건에 맞지 않은 input값 들어오면 class이름 바뀌면서 '올바른 비밀번호을 입력해주세요' 알림글이 밑에 표시 -->
-                            <input type="password" placeholder="비밀번호을 입력해주세요." name="userPassword" data-testid="Input_email" class="css-wq6t17" value="">
+                            <input type="password" placeholder="비밀번호을 입력해주세요." id="userPassword" name="userPassword" data-testid="Input_email" class="css-wq6t17" value="">
+                            <div id="result"></div>
                             <!-- 수정 필요 : 조건에 맞는 비밀번호 작성시 버튼 활성화되도록 수정. disabled script로 작성 -->
-                            <button type="submit" data-testid="Button" data-attribute-id="signupLogin__start" data-method="email" class="css-c61xw1">
+                            <button id="loginBtn" type="submit" data-testid="Button" data-attribute-id="signupLogin__start" data-method="email" class="css-c61xw1">
                                 <span data-testid="Typography" color="var(--theme-palette-colors-black-100)" class="css-m3uta">
                                      로그인 하기
                                 </span>
@@ -97,4 +98,6 @@
         </div>
     </div>
 </body>
+<script src="${pageContext.request.contextPath}/assets/js/user/jquery.min.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/assets/js/user/signupPw.js"></script> --%>
 </html>

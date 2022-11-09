@@ -77,12 +77,12 @@
                       </li>
                       <!--selectNav는 나중에 적용-->
                       
-                      <li class="selectedNav">
-                          <a href="" class="">품앗이 게시판</a>
-                      </li>
-                      <li class="">
-                          <a href="#" class="" aria-label="">마이 페이지</a>
-                      </li>
+                     <li class="selectedNav">
+                            <a href="${pageContext.request.contextPath}/board/boardListOk.me2" class="">품앗이 게시판</a>
+                        </li>
+                        <li class="">
+                            <a href="${pageContext.request.contextPath}/mypage/myPageMain.pa" class="" aria-label="">마이 페이지</a>
+                        </li>
                       <li class="">
                           <a href="#" class="" aria-label="">봉사 활동</a>
                       </li>

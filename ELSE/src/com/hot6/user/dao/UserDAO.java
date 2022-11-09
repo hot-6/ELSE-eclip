@@ -1,5 +1,7 @@
 package com.hot6.user.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.hot6.user.vo.UserVO;
@@ -28,4 +30,25 @@ public class UserDAO {
 	public boolean getEmail(UserVO userVO) {
 		return (Integer)sqlSession.selectOne("user.getEmail", userVO) == 1;
 	}
+	
+	public String getUserNum(String userEmail) {
+		return (String)sqlSession.selectOne("user.getUserNum", userEmail);
+	}
+	
+	public List<UserVO> forSession(String userEmail) {
+		return sqlSession.selectList("user.forSession", userEmail);
+	}
+	
+	public boolean signupcheckPw(String checkUserPw) {
+		return (Integer)sqlSession.selectOne("user.signupcheckPw", checkUserPw) == 0;
+	}
+	
+    public String getUserName(int userNum) {
+       return sqlSession.selectOne("user.getUserName", userNum);
+    }
+    
+    public String getUserPhoneNum(int userNum) {
+       return sqlSession.selectOne("user.getUserPhoneNum", userNum);
+    }
+
 }

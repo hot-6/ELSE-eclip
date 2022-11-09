@@ -128,9 +128,10 @@ body{
     line-height: 24px;
     color: #000;
 }
-
-.board_exchange_labor_title>h2{
-    display: inline;
+.board_exchange_labor_title li{
+    display: inline-block;
+}
+.board_exchange_labor_title a{
     font-size: 22px;
     font-weight: 700;
     line-height: 1.05;
@@ -138,7 +139,7 @@ body{
     margin-right: 50px;
     
 }
-.board_exchange_labor_title>h2:nth-child(1){
+.board_exchange_labor_title a.boardExchange1{
     text-decoration: underline;
 }
 
@@ -256,7 +257,7 @@ body{
     margin-top: 10px;
 }
 
-.list_card .body .card_work_time {
+.list_card .body .card_work_date, .list_card .body .card_work_time {
     margin-top: 10px;
     color: #333;
     font-size: 14px;

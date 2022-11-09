@@ -2,6 +2,7 @@ package com.hot6.user;
 
 import java.io.IOException;
 import java.rmi.ServerException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,14 +20,24 @@ public class JoinOkController implements Execute{
 		req.setCharacterEncoding("utf-8");
 		
 		UserDAO userDAO = new UserDAO();
+		UserVO userVO = new UserVO();
 		Result result = new Result();
 		HttpSession session = req.getSession();
 		
-		session.setAttribute("userName", req.getParameter("userName"));
-		session.setAttribute("userPhoneNum", req.getParameter("userPhoneNum"));
-		session.setAttribute("userPassword", req.getParameter("userPassword"));
+		userVO.setUserAddress(req.getParameter("userAddress") + req.getParameter("userAddressDetail"));
+		userVO.setUserName(req.getParameter("userName"));
+		userVO.setUserPhonenum(req.getParameter("userPhoneNum"));
+		userVO.setUserPw(req.getParameter("userPhoneNum"));
+		userVO.setUserEmail((String)session.getAttribute("userEmail"));
 		
-		result.setPath(req.getContextPath() + "/user/termsOfService.us");
+		userDAO.allTermsOk(userVO);
+		// 이메일 세션을 파라미터해서 정보들을 가져옴 -> 세션으로 지정
+		
+		
+		result.setRedirect(true);
+		result.setPath(req.getContextPath() + "/user/signupLogin.us");
+		
+		session.invalidate();
 		
 		return result;
 	}

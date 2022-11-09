@@ -25,6 +25,9 @@ public class AllTermsOkController implements Execute {
 		userVO.setUserName((String)session.getAttribute("userName"));
 		userVO.setUserPhonenum((String)session.getAttribute("userPhoneNum"));
 		userVO.setUserPw((String)session.getAttribute("userPassword"));
+		userVO.setUserAddress(req.getParameter("userAddress") + req.getParameter("userAddressDetail"));
+		
+		System.out.println(req.getParameter("userAddress") +" " + req.getParameter("userAddressDetail"));
 		
 		userDAO.allTermsOk(userVO);
 		

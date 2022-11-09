@@ -1,20 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>신청내역</title>
-    <link rel="stylesheet" href="..\css\myPage.css" crossorigin="anonymous"/>
+    <title>관심목록</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mypage/myPage.css" />
 
         <!--header 관련 css-->
     
-        <link rel="stylesheet" href="../main/css/header.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index/header.css">
         <!--footer 관련 css-->
-        <link href="../main/css/footer.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/assets/css/index/footer.css" rel="stylesheet">
     
           <!--폰트 관련 css ***** 폰트 관련 css는 한 번만 적용-->
       <link
@@ -24,6 +26,7 @@
         />
 
 </head>
+
 <body>
      <!--header 적용 시작-->
      <div id="__next">
@@ -47,10 +50,10 @@
                         </li>
                         <!--selectNav는 나중에 적용-->
                         <li class="selectedNav">
-                            <a href="" class="">품앗이 게시판</a>
+                            <a href="${pageContext.request.contextPath}/board/boardListOk.me2" class="">품앗이 게시판</a>
                         </li>
                         <li class="">
-                            <a href="#" class="" aria-label="">마이 페이지</a>
+                            <a href="${pageContext.request.contextPath}/mypage/myPageMain.pa" class="" aria-label="">마이 페이지</a>
                         </li>
                         <li class="">
                             <a href="#" class="" aria-label="">봉사 활동</a>
@@ -91,79 +94,82 @@
     <!--header 적용 끝-->   
 
 
-        <br><Br><Br><br>
+      <br><Br><Br><br>
     <div class="mypage_background">
         <h1 style="margin-left: 15%;">ELSE</h1>
         <!-- 개인정보 페이지 -->
         <div class="mypage" id="mpDIV">
             <!-- 왼쪽 개인정보 구성화면 -->
             <div class="userInfo" style="width: 17%; line-height: 2; margin-left: 14.5%; background-color: white; float: left;" id="mpDIV">
-                <!-- 유저 프로필 사진 -->
-                <div class="userProfile" id="mpDIV">
-                    <img src="../img/pinggu.jpeg" class="userProfile" style="margin-bottom:10%;">
-                    <div class="userProfile_Upload" id="mpDIV">
-                    </div>
-                </div>
                 <!-- 유저 개인정보 -->
                 <div style="margin-bottom: 5%;" id="mpDIV">
                       <div class="userName" id="mpDIV">
-                          <h1>홍길동</h1>
-                          <p style="font-size: 20px;">hongGD@gmail.com</p> 
+                          <h1><c:out value="${sessionScope.userName}"/></h1>
+                          <p style="font-size: 20px;"><c:out value="${sessionScope.userEmail}"/></p> 
                       </div>
                       
                       <div class="userPhoneNumber" id="mpDIV">
-                          <p style="font-size: 20px;">010-1234-5678</p> 
+                          <p style="font-size: 20px;"><c:out value="${sessionScope.userPhonenum}"/></p> 
                       </div>
                       
-                          <h3 style="display: inline-flex">관심태그 : </h3>
-                          <p style="display: inline-flex"> 과일, 나눔, 체험</p>
+                          <h3 style="display: inline-flex">신뢰점수 : <c:out value="${sessionScope.userTrust}"/></h3>
+
                       
                 </div>
                       
                       <!-- <hr class="userinfo_hr" style="border-color:#e3dede; border:3px 0 0 0"> -->
                       
-                      <div class="point" style="text-align: left;">
-                          <p style="display: inline-flex; font-size: 25px;  margin-left: 10%;" id="bold">포인트 : </p>
-                          <p style="display: inline-flex; font-size: 25px;" id="bold"> 10,000 P</p>
+                      <div class="point" style="text-align: left; margin-left:40px">
+                          <p style="display: inline-flex; font-size: 25px;  margin-left: 10%;" id="bold">포인트 : <c:out value="${sessionScope.userPoint}"/></p>
+                          
                       </div>
                       
-                      <div class="point">
+                  <div class="point">
                         <div class="list" id="left" id="mpDIV">
-                          <p style="font-size: 25px;">신청내역</p>
+    
+                           <a href="/mypage/boardApply.pa" class="lista">
+                        <p style="font-size: 22px; text-align:center;">게시글내역</p>
+                     </a>
                         </div>
                         <div class="likeList" id="left" id="mpDIV">
-                          <p style="font-size: 25px;">관심목록</p>
+                             <a href="/mypage/interestElse.pa" class="lista">
+                        <p style="font-size: 22px; text-align:center;">관심글내역</p>
+                     </a>
                         </div>
                         <div class="undo" id="left" id="mpDIV">
-                          <p style="font-size: 25px;">신청취소</p>
+                          <a href="/mypage/submitApply.pa" class="lista">
+                        <p style="font-size: 22px; text-align:center;">신청글내역</p>
+                     </a>
                         </div>
                       </div>
                       <div class="point">
                         <div class="userOption" id="left" id="mpDIV"> 
-                          <p style="font-size: 25px;">계정설정</p>
+                          <a href="/mypage/myInformation.pa" class="lista">
+                        <p style="font-size: 22px; text-align:center;">계정 설정</p>
+                     </a>
                         </div>
                       </div>
                       <div id="mpDIV"></div>
             </div>
           <!-- 위쪽 지원현황 -->
-                  <div class="listTool" id="mpDIV">
+                 <div class="listTool" id="mpDIV">
                       <h1 style="text-align: left; font-size: 20px; margin-left: 5%;">지원현황</h1>
                       <div id="mpDIV">
                           <div style="float: left; width: 24%;" id="mpDIV">
-                            <h1> 0</h1>
-                              <p style="font-size: 20px;"> 지원완료 </p>
+                            <h1> <c:out value="${boardCount}"/></h1>
+                              <p style="font-size: 20px;"> 게시글 </p>
+                          </div>
+                          <div class="supportList" style="float: left; width: 24%;">
+                            <h1><c:out value="${interCount}"/></h1>
+                              <p style="font-size: 20px;"> 관심글 </p> 
+                          </div>
+                          <div class="supportList" style="float: left; width: 24%;">
+                            <h1><c:out value="${partiCount}"/></h1>
+                              <p style="font-size: 20px;"> 참여글 </p> 
                           </div>
                           <div class="supportList" style="float: left; width: 24%;">
                             <h1>0</h1>
-                              <p style="font-size: 20px;"> 지원서 열람 </p> 
-                          </div>
-                          <div class="supportList" style="float: left; width: 24%;">
-                            <h1>2</h1>
-                              <p style="font-size: 20px;"> 참여이력 </p> 
-                          </div>
-                          <div class="supportList" style="float: left; width: 24%;">
-                            <h1>3</h1>
-                              <p style="font-size: 20px;"> 스크랩 </p> 
+                              <p style="font-size: 20px;"> 문의글 </p> 
                           </div>
                       </div>
                       <div></div>
@@ -174,79 +180,40 @@
                     <div class="profile" id="mpDIV">
                         <div style="margin-top: 5%; margin-bottom: 5%;"id="mpDIV">
                         </div>
-                        <h3 style="text-align: left; margin-left: 3%; font-size: 25px;">홍길동님의 신청내역</h3>
+                        <h3 style="text-align: left; margin-left: 3%; font-size: 25px;"><c:out value="${sessionScope.userName}"/>님의 참여글</h3>
+
                         <div class="list_div">
+                        <c:choose>
+                           <c:when test="${not empty submits and fn:length(submits) > 0}">
+                            <c:forEach var="submit" items="${submits}">
                         <div style="margin-left: 3%; margin-right: 3%;float: left;" id="mpDIV">
-                            <img src="../img\성주참외.jpg" style="width: 300px; height: 200px;">
+                            <img src="${pageContext.request.contextPath}/assets/images/과수원.jpeg" style="width: 300px; height: 150px;">
                         </div>
                         <div style="margin-bottom: 2%; height: 30%;" id="mpDIV">
-                            <h2>참외 하우스 일손 돕기</h2>
+                            <h2><c:out value="${submit.getBoardTextName()}"/></h2>
                             <div>
-                            <p style="text-align: left; font-size: 15px;">장소 : 충청남도 논산시 대교동
-                            <br> 날짜 : 2022년 08월 17일
-                            <br> 업무시간 : 11시 ~ 17시
-                            <br> 업무강도 : 중
-                            <br>
-                            <br> 업무내용 : 맛있게 익은 참외를 수확하여 품질별로 분류 후 상자 포장.
-                            <br> 수확을 마친 후 익지 않은 참외는 농약과 물을 뿌려 잘 자랄 수 있도록 한다.
-                            </p>
+                                <p style="text-align: left; font-size: 15px;">장소 : <c:out value="${submit.getBoardWorkArea()}"/>
+                                       <br> 업무시간 : <c:out value="${submit.getBoardWorkTime()}"/>
+                                       <br> 업무강도 : <c:out value="${submit.getBoardWorkHard()}"/>
+                                       <br> 업무내용 : <c:out value="${submit.getBoardSimpleText()}"/></p>
                           </div>
                         </div>
+                        </c:forEach>
+                            </c:when>
+                              <c:otherwise>
+                              <div align="center">등록된 게시물이 없습니다.</div>
+                              </c:otherwise>
+                        </c:choose>
                       </div>
-                      <div class="list_div">
-                        <div style="margin-left: 3%;margin-right: 3%; float: left; height: 30%;" id="mpDIV">
-                            <img src="../img\해산물직판장.jpg" style="width: 300px; height: 200px;">
-                        </div>
-                        <div style="margin-bottom: 2%; height: 30%;" id="mpDIV">
-                            <h2>해산물 직판장에서 해산물 운반</h2>
-                            <div style="margin-left: 3%;">
-                            <p style="text-align: left; font-size: 15px;">장소 : 경기도 화성시 궁평항
-                            <br> 날짜 : 2021년 10월 09일
-                            <br> 업무시간 : 05시 ~ 11시
-                            <br> 업무강도 : 상
-                            <br>
-                            <br> 이른 아침 어선에서 출하된 해산물들을 수산시장에 종사하시는 업주들이 경매에 참여하여 가져가는데
-                            <br> 이 때 낙찰된 해산물이 들어있는 통을 분류하고 운반하는 업무.
-                            </p></div>
-                        </div>
-                      </div>
-                      <div class="list_div">
-                        <div style="margin-left: 3%;margin-right: 3%; float: left; height: 30%;" id="mpDIV">
-                            <img src="../img\blank.png" style="width: 300px; height: 160px;">
-                        </div>
-                        <div style="margin-bottom: 2%; height: 30%;" id="mpDIV">
-                            <h2>새롭게 추가될 영역입니다.</h2>
-                            <div style="margin-left: 3%;">
-                            <p style="text-align: left; font-size: 20px;">장소 : -
-                            <br> 날짜 : -
-                            <br> 업무시간 : -
-                            <br> 업무강도 : -
-                            <br>
-                            <br> 
-                            </p></div>
-                        </div>
-                      </div>
-                      <div class="list_div">
-                        <div style="margin-left: 3%;margin-right: 3%; float: left; height: 30%;" id="mpDIV">
-                            <img src="../img\blank.png" style="width: 300px; height: 160px;">
-                        </div>
-                        <div style="margin-bottom: 2%; height: 30%;" id="mpDIV">
-                            <h2>새롭게 추가될 영역입니다.</h2>
-                            <div style="margin-left: 3%;">
-                            <p style="text-align: left; font-size: 20px;">장소 : -
-                            <br> 날짜 : -
-                            <br> 업무시간 : -
-                            <br> 업무강도 : -
-                            <br>
-                            <br> 
-                            </p></div>
-                        </div>
-                      </div>
+
+                    
+                       
+                      
                     </div>
                 </div>
     
     
-    </aside>
+
 </div>
 <br><Br><Br><br>
 <!--footer 적용 시작-->
@@ -265,7 +232,7 @@
             style="width: 80px; height: 50px;"
           />  
         </div>
-        <div class="NavLinks_NavLinks__links__bQozT"">
+        <div class="NavLinks_NavLinks__links__bQozT">
           <a
             href="https://www.wantedlab.com/"
             class=""
@@ -349,14 +316,11 @@
           alt="country flag KR"
         /><select>
           <option value="KR">한국 (한국어)</option>
-          <!--추후 선택
-          <option value="JP">日本 (日本語)</option>
-          <option value="WW">Worldwide (English)</option>
-          <option value="SG">Singapore (English)</option></select
-        ><i class="icon-arrow_bottom_fill"></i>
-        -->
+
+
+          </select><i class="icon-arrow_bottom_fill"></i>
+
       </div>
     </div>
   </footer>
-  <!--footer 적용 끝-->
-</html>
+ </html>

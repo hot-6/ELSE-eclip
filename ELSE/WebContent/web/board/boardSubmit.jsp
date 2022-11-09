@@ -20,6 +20,9 @@
     />
     <meta name="next-head-count" content="27" />
     <title>핫식스 | 품앗이</title>
+    <!-- title에서 글씨옆에 로고 -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/hot6.jpg">
+    
     <!-- ㅡmain css-->
 
     <link
@@ -27,8 +30,8 @@
       href="//d1azc1qln24ryf.cloudfront.net/78252/wantedicon/style-cf.css"
       media="screen"
     />
-    <link rel="stylesheet" href="../css/board.css" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="../css/boardSubmit.css" crossorigin="anonymous"/>
+    <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index/board.css" crossorigin="anonymous"/> --%>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/board/boardSubmit.css" crossorigin="anonymous"/>
     <!-- 게시판 관련 css -->
     <link
       rel="stylesheet"
@@ -38,10 +41,9 @@
     />
 
     <!--header 관련 css-->
-    
-    <link rel="stylesheet" href="../main/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index/header.css">
     <!--footer 관련 css-->
-    <link href="../main/css/footer.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/css/index/footer.css" rel="stylesheet">
 
       <!--폰트 관련 css ***** 폰트 관련 css는 한 번만 적용-->
   <link
@@ -77,11 +79,11 @@
                             <a href="/" class="">홈</a>
                         </li>
                         <!--selectNav는 나중에 적용-->
-                        <li class="selectedNav">
-                            <a href="" class="">품앗이 게시판</a>
+          <li class="selectedNav">
+                            <a href="${pageContext.request.contextPath}/board/boardListOk.me2" class="">품앗이 게시판</a>
                         </li>
                         <li class="">
-                            <a href="#" class="" aria-label="">마이 페이지</a>
+                            <a href="${pageContext.request.contextPath}/mypage/myPageMain.pa" class="" aria-label="">마이 페이지</a>
                         </li>
                         <li class="">
                             <a href="#" class="" aria-label="">봉사 활동</a>
@@ -124,19 +126,18 @@
         <div class="submitDetail">
             <div class="submitDetail_container">
                 <div class="submitDetail_body">
+                <form action="${pageContext.request.contextPath}/board/exchangeRegisterOk.me2" name="writeForm" method="post" enctype="multipart/form-data">
                     <div class="submitDetail_body_basic">
                       <div class="submitDetail_body_basic_title">
                         <div>
-                          <input type="text" class="submitInput_name" maxlength="100" placeholder="이름(필수)" name="name" value="고진혁">
-                      
+                            <p class="submitInput_name"><c:out value="${userName}"/></p>
                         </div>
                         <div>
-                          <input type="text" class="submitInput_phonenumber" maxlength="100" placeholder="번호(필수)" name="phonenumber" value="010-1234-1234">
-                      
+                            <p class="submitInput_phonenumber"><c:out value="${userPhoneNum}"/></p>
                         </div>
                       </div>
-
                     </div>
+                    
                     <div class="submitDetail_body_about">
                       <div class="submitDetail_body_about_header">간단소개글</div>
                       <p class="submitDetail_body_guide">
@@ -148,7 +149,7 @@
                       </p>
                       <div>
                         <div class="DynamicTextarea_Textarea">
-                          <textarea class="submit_input" style="height: 34px; color: rgb(59, 61, 64); margin: 30px 0px 3px;" maxlength="4000" placeholder="간단한 업무소개를 통해 원활한 참여가 이루어지도록 해봐요. (3~5줄 권장)"></textarea>
+                          <textarea name="boardContent" class="submit_input" style="height: 34px; color: rgb(59, 61, 64); margin: 30px 0px 3px;" maxlength="4000" placeholder="간단한 업무소개를 통해 원활한 참여가 이루어지도록 해봐요. (3~5줄 권장)"></textarea>
                         </div>
                       </div>
                     </div>
@@ -156,9 +157,38 @@
                     <div class="submitDetail_photo">
                       <div class="submitDetail_photo_header">사진</div>
                       <p class="submitDetail_photo_guide">업무와 관련된 사진을 추가해주세요.</p>
-                      <div class="submitDetail_photo_body">
+                      <div style="display:flex;">
+                              <div class="files">
+                                 <div>
+                                    <label for="board_file1" style="display:inline;">
+                                       <img id="board_file1Img" src="${pageContext.request.contextPath}/assets/images/filePlus.png" width="110px" height="110px" style="display:inline;">
+                                    </label>
+                                 </div>
+                                 <input id="board_file1" name="board_file1" type="file" style="display:none;">
+                                 <input type="button" onclick="cancelFile('board_file1')" value="첨부 삭제">
+                              </div>
+                              <%-- <div class="files">
+                                 <div>
+                                    <label for="board_file2" style="display:inline;">
+                                       <img id="board_file2Img" src="${pageContext.request.contextPath}/assets/images/filePlus.png" width="110px" height="110px" style="display:inline;">
+                                    </label>
+                                 </div>
+                                 <input id="board_file2" name="board_file2" type="file" style="display:none;">
+                                 <input type="button" onclick="cancelFile('board_file2')" value="첨부 삭제">
+                              </div> --%>
+                              <%-- <div class="files">
+                                 <div>
+                                    <label for="board_file3" style="display:inline;">
+                                       <img id="board_file3Img" src="${pageContext.request.contextPath}/assets/images/filePlus.png" width="110px" height="110px" style="display:inline;">
+                                    </label>
+                                 </div>
+                                 <input id="board_file3" name="board_file3" type="file" style="display:none;">
+                                 <input type="button" onclick="cancelFile('board_file3')" value="첨부 삭제">
+                              </div> --%>
+                        </div>
+                      <!-- <div class="submitDetail_photo_body">
                         <button type="button" class="submitDetail_photoBtn">+ 추가</button>
-                      </div>
+                      </div> -->
                     </div>
 
                     <div class="submitDetail_photo">
@@ -171,39 +201,42 @@
                       <div class="submitDetail_photo_body">
                         <form class="submitDetail_form">
                           <label for="name" class="submit_label">글 제목</label>
-                          <input type="text" name="글 제목"/ class="submitDetail_inputA" id="inputab"><br>
+                          <input type="text" name="boardTitle" class="submitDetail_inputA" id="inputab"><br>
                           <div class="pont">
                           업무 강도 : 상      
-                            <input type="radio" name="강도" value="상" >
+                            <input type="radio" name="workHard" value="상" >
                           중      
-                          <input type="radio" name="강도" value="중" >
+                          <input type="radio" name="workHard" value="중" >
                           하      
-                          <input type="radio" name="강도" value="하" >
+                          <input type="radio" name="workHard" value="하" >
                           <br>
                           <br>
                           </div>
                        
                           <label for="pusharea" class="submit_label">요청 지역</label>
-                          <input type="text" name="요청지역"/ class="submitDetail_inputA" id="inputab"><br>
+                          <input type="text" name="workArea" class="submitDetail_inputA" id="inputab"><br>
                       
+                          <label for="worktime" class="submit_label">업무 날짜</label>
+                          <input type="date" name="workDate" style="border: 1px solid #d0e3f4; margin-bottom: 30px;">
+
                           <label for="worktime" class="submit_label">업무 시간</label>
-                          <input type="text" name="업무 시간"/ class="submitDetail_inputA" id="inputab"><br>
+                          <input type="text" name="workTime" class="submitDetail_inputA" id="inputab" placeholder="예) 12:00~15:00"><br>
                       
                           </form>
-                          <button type="button" class="submitDetail_photoBtnA">완료</button>
+                          <button type="button" class="submitDetail_photoBtnA" onclick="send()">완료</button>
                     
                       </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
+        </div>   
       </inner>
-      <footer class="Footer_footerClass__OWEZy">
+      
+      <!-- <footer class="Footer_footerClass__OWEZy">
         <div class="Footer_rowClass__bFAtS">
           <div class="NavLinks_NavLinks__xaNkJ">
             <div class="NavLinks_NavLinks__logo__MCbfZ">
-              <!--이곳에 기업의 로고가 들어갑니다-->
+              이곳에 기업의 로고가 들어갑니다
               <img
                 src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fuserweb%2Flogo_wanted_black.png&amp;w=110&amp;q=100"
                 alt="wanted"
@@ -346,7 +379,7 @@
           </div>
         </div>
       </footer>
-    </div>
+    </div> -->
 
     <!--footer 적용 시작-->
 <footer class="Footer_footerClass__OWEZy">
@@ -355,7 +388,7 @@
       <div class="NavLinks_NavLinks__logo__MCbfZ">
         <!--이곳에 기업의 로고가 들어갑니다-->
         <img
-          src="../img/hot6.jpg"
+          src="${pageContext.request.contextPath}/assets/images/hot6.jpg"
           alt="wanted"
           style="width: 80px; height: 50px;"
         />  
@@ -454,5 +487,43 @@
   </div>
 </footer>
 <!--footer 적용 끝-->
+
+<!-- Scripts -->
+      <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+      <script>
+      function send(){
+          if(!writeForm.boardTitle){
+             alert("제목을 작성해주세요.");
+             return;
+          }
+          
+          if(!writeForm.boardContent){
+             alert("내용을 작성해주세요.");
+             return;
+          }
+          
+          writeForm.submit();
+       }
+      
+         $(".files").change(function(e){
+            var file = e.target.files[0];
+            var img = $(this).find("img");
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            
+             reader.onload = function(e){
+                if(e.target.result.indexOf("image") != -1){
+                   img.attr("src", e.target.result)
+                }else{
+                   img.attr("src", "${pageContext.request.contextPath}/assets/images/no_img.jpg");
+                }
+             }
+          });
+         
+         function cancelFile(fileName){
+            $("input#" + fileName).val("");
+            $("img#" + fileName + "Img").attr("src", "${pageContext.request.contextPath}/assets/images/filePlus.png");
+         }
+      </script>
   </body>
 </html>

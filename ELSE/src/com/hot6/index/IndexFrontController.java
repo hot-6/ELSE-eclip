@@ -24,18 +24,11 @@ public class IndexFrontController extends HttpServlet{
 		String target = req.getRequestURI().substring(req.getContextPath().length());
 		Result result = null;
 		
-		if(target.equals("/index/promotionBoard.me")) {
-			// 메인 페이지에 띄울 각 게시판의 정보 가져와야 함
-			// select (정보들) from tbl_board(board type으로 특정 게시판으로 가줘야할듯) where (각 게시판 게시글 번호 최신에서 4개) = (게시글 번호)
-		}else if(target.equals("/index/epilogueBoard.me")) {
-			// ..
-		}else if(target.equals("/index/exchangeBoard.me")) {
-			// ..
-		}else if(target.equals("/index/main.in")) {
-			
-			result = new Result();
-			result.setPath("/web/index/main.jsp");
-			
+		if(target.equals("/index/main.in")) {
+			// 메인 페이지 띄울 때
+			// db 에 있는 컨텐츠들에 대한 정보들을 조회해서 가져와야 함
+			// mainFirstController 필요
+			result = new MainFirstController().execute(req, resp);
 		}
 		
 		

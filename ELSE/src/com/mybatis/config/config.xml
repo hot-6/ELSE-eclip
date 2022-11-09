@@ -8,13 +8,22 @@
 
 	<typeAliases>
    		<typeAlias type="com.hot6.user.vo.UserVO" alias="userVO"/>
-   		<typeAlias type="com.hot6.user.vo.UsermodiVO" alias="usermodiVO"/>
-   		<typeAlias type="com.hot6.user.vo.TrustVO" alias="tructVO"/>
-   		<typeAlias type="com.hot6.user.vo.SubmitVO" alias="submitVO"/>
-   		<typeAlias type="com.hot6.user.vo.PointVO" alias="pointVO"/>
-   		<typeAlias type="com.hot6.board.vo.BoardVO" alias="boardVO"/>
-   		<typeAlias type="com.hot6.board.vo.BulletinVO" alias="bulletinVO"/>
-   		<typeAlias type="com.hot6.board.vo.FileVO" alias="fileVO"/>
+   		<typeAlias type="com.hot6.user.vo.UserDTO" alias="userDTO"/>
+        <typeAlias type="com.hot6.user.vo.InterestVO" alias="interestVO"/>
+        <typeAlias type="com.hot6.user.vo.InterestDTO" alias="interestDTO"/>
+        <typeAlias type="com.hot6.user.vo.PartiDTO" alias="partiDTO"/>
+        <typeAlias type="com.hot6.user.vo.UsermodiVO" alias="usermodiVO"/>
+        <typeAlias type="com.hot6.user.vo.TrustVO" alias="tructVO"/>
+        <typeAlias type="com.hot6.user.vo.SubmitVO" alias="submitVO"/>
+        <typeAlias type="com.hot6.user.vo.PointVO" alias="pointVO"/>
+        <typeAlias type="com.hot6.board.vo.BoardVO" alias="boardVO"/>
+        <typeAlias type="com.hot6.board.vo.BoardDTO" alias="boardDTO"/>
+        <typeAlias type="com.hot6.file.vo.FileVO" alias="fileVO"/>
+        <typeAlias type="com.hot6.admin.vo.AdminVO" alias="adminVO"/>
+   		<typeAlias type="com.hot6.admin.vo.AdminDTO" alias="adminDTO"/>
+   		<typeAlias type="com.hot6.admin.vo.InquiryVO" alias="inquiryVO"/>
+   		<typeAlias type="com.hot6.admin.vo.InquiryDTO" alias="inquiryDTO"/>
+   		<typeAlias type="com.hot6.admin.vo.NoticeVO" alias="noticeVO"/>
    </typeAliases>
 
    <environments default="mysql">
@@ -22,7 +31,7 @@
          <transactionManager type="JDBC"/>
          <dataSource type="POOLED">
             <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="url" value="jdbc:mysql://localhost:3306/hot6"/>
+            <property name="url" value="jdbc:mysql://localhost:3306/hot6else"/>
             <property name="username" value="root"/>
             <property name="password" value="1234"/>
          </dataSource>
@@ -35,5 +44,6 @@
       <mapper resource="com/mybatis/mapper/BoardMapper.xml"/>
       <mapper resource="com/mybatis/mapper/IndexMapper.xml"/>
       <mapper resource="com/mybatis/mapper/MyPageMapper.xml"/>
+      <mapper resource="com/mybatis/mapper/FileMapper.xml"/>
    </mappers>
 </configuration>

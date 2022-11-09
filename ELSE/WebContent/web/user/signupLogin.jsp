@@ -52,9 +52,9 @@
                                 </label>
                             </div>
                             <!-- 수정 필요 : 조건에 맞지 않은 input값 들어오면 class이름 바뀌면서 '올바른 이메일을 입력해주세요' 알림글이 밑에 표시 -->
-                            <input type="email" placeholder="이메일을 입력해주세요." name="checkEmail" data-testid="Input_email" class="css-wq6t17" value="">
+                            <input id="getEmail" type="email" placeholder="이메일을 입력해주세요." name="checkEmail" data-testid="Input_email" class="css-wq6t17" value="">
                             <!-- 수정 필요 : 조건에 맞는 이메일 작성시 버튼 활성화되도록 수정. disabled script로 작성 -->
-                            <button type="submit" data-testid="Button" data-attribute-id="signupLogin__start" data-method="email" class="css-c61xw1">
+                            <button id="emailCheckButton" type="submit" data-testid="Button" data-attribute-id="signupLogin__start" data-method="email" class="css-c61xw1" disabled>
                                 <span data-testid="Typography" color="var(--theme-palette-colors-black-100)" class="css-m3uta">
                                     이메일로 계속하기
                                 </span>
@@ -62,38 +62,26 @@
                             <p data-testid="Typography" color="var(--theme-palette-colors-gray-500)" class="css-1gakm8s">또는</p>
                             <!-- 다른 플랫폼 버튼 -->
                             <div class="css-oaesky">
-                                <button type="button" data-attribute-id="signupLogin__start" data-method="kakao" class="css-pmoqnk">
-                                    <span class="css-1ihsymv">
-                                        <img src="${pageContext.request.contextPath}/assets/images/kakao.jpg">
-                                    </span>
-                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1k09ww9">
-                                        Kakao
-                                    </p>
-                                </button>
-                                <button type="button" data-attribute-id="signupLogin__start" data-method="facebook" class="css-pmoqnk">
-                                    <span class="css-1ihsymv">
-                                        <img src="${pageContext.request.contextPath}/assets/images/facebook.jpg">
-                                    </span>
-                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1k09ww9">
-                                        Facebook
-                                    </p>
-                                </button>
-                                <button type="button" data-attribute-id="signupLogin__start" data-method="google" class="css-15tdtnf">
-                                    <span class="css-1ihsymv">
-                                        <img src="${pageContext.request.contextPath}/assets/images/google.jpg">
-                                    </span>
-                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1k09ww9">
-                                        Google
-                                    </p>
-                                </button>
-                                <button type="button" data-attribute-id="signupLogin__start" data-method="apple" class="css-pmoqnk">
-                                    <span class="css-1ihsymv">
-                                        <img src="${pageContext.request.contextPath}/assets/images/apple.jpg">
-                                    </span>
-                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1k09ww9">
-                                        Apple
-                                    </p>
-                                </button>
+                            	<div class="kakaoButton" style="margin: 0 auto; margin-right: 20px;">
+	                                <button type="button" data-attribute-id="signupLogin__start" data-method="kakao" class="css-pmoqnk">
+	                                    <span class="css-1ihsymv">
+	                                        <img src="${pageContext.request.contextPath}/assets/images/kakao.jpg">
+	                                    </span>
+										<p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1k09ww9">
+	                                        Kakao
+	                                   	</p>
+	                                </button>
+                                </div>
+                                <div class="googleButton" style="margin: 0 auto; margin-left: 20px;">
+	                                <button type="button" data-attribute-id="signupLogin__start" data-method="google" class="css-15tdtnf">
+	                                    <span class="css-1ihsymv">
+	                                        <img src="${pageContext.request.contextPath}/assets/images/google.jpg">
+	                                    </span>
+	                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1k09ww9">
+	                                        Google
+	                                    </p>
+	                                </button>
+                                </div>
                             </div>
                             <!-- 하단(이용약관, 개인정보처리방침) -->
                             <hr class="css-xxj27e">
@@ -135,4 +123,8 @@
         </div>
     </div>
 </body>
+<script src="${pageContext.request.contextPath}/assets/js/user/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/user/emailCheckJs.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/user/kakaoLogin.js"></script>
 </html>

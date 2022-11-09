@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board">
+   <select id="selectAll" parameterType="map" resultType="boardDTO">
+      select user_name, u.user_num, board_id, board_boardtype, board_texttime, board_textname, board_maintext, board_workcg, board_workhard, board_workarea, board_worktime, board_workdate, board_status
+      from tbl_user u join tbl_board b
+      on u.user_num = b.user_num
+      order by board_id desc
+      limit #{startRow}, #{rowCount}
+   </select>
+   
+   <select id="getTotal" resultType="_int">
+      select count(board_id) from tbl_board
+   </select>
+   
+   <insert id="exchangeRegisterOk" parameterType="boardVO">
+      insert into tbl_board (board_textname, board_maintext, board_workhard, board_workarea, board_workdate, board_worktime, user_num)
+      values (#{boardTextName}, #{boardMainText}, #{boardWorkHard}, #{boardWorkArea}, #{boardWorkDate}, #{boardWorkTime}, #{userNum})
+   </insert>
+   
+   <select id="getSequence" resultType="_int">
+      select LAST_INSERT_ID()
+   </select>
+   
+   <select id="selectPartition" parameterType="_int" resultType="boardDTO">
+      select user_name, u.user_num, board_id, board_texttime, board_textname, board_maintext, board_workhard, board_workarea, board_worktime, board_status
+      from tbl_user u join tbl_board b on board_id = #{boardId} and u.user_num = b.user_num 
+   </select>
+  
 </mapper>
-
 

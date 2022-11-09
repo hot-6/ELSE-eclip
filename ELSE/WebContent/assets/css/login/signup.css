@@ -278,3 +278,9 @@ option {
 #activeAll {
 	disabled:"";
 }
+
+.btn_address {
+	border: none;
+	color: var(--theme-palette-colors-gray-300);
+    background-color: var(--theme-palette-colors-bluegray-100);
+}

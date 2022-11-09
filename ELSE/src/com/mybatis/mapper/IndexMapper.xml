@@ -1,4 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="index">
+	<select id="selectMainContent" resultType="boardDTO">
+		select board_textname, board_maintext, u.user_name, f.file_system_name, b.board_id
+		from tbl_user u join tbl_board b join tbl_file f 
+		on u.user_num = b.user_num and b.board_id = f.board_id
+		where board_boardtype = 01
+		order by b.board_id desc
+		limit 0, 4;
+	</select>
+	
+	<select id="selectPromotionContent" resultType="boardDTO">
+		select board_textname, board_maintext, u.user_name, f.file_system_name
+		from tbl_user u join tbl_board b join tbl_file f 
+		on u.user_num = b.user_num and b.board_id = f.board_id
+		where board_boardtype = 02
+		order by b.board_id desc
+		limit 0, 4;
+	</select>
+	
+	<select id="selectReviewContent" resultType="boardDTO">
+		select board_textname, board_maintext, u.user_name, f.file_system_name
+		from tbl_user u join tbl_board b join tbl_file f 
+		on u.user_num = b.user_num and b.board_id = f.board_id
+		where board_boardtype = 03
+		order by b.board_id desc
+		limit 0, 4;
+	</select>
 </mapper>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="ko-KR" class="ko kr">
   <head>
@@ -8,6 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
     <meta charset="utf-8" />
+    <%-- <meta http-equiv="refresh" content="0;url=http://localhost:8085/index/main.in" /> --%>
     <title>핫식스-품앗이</title>
 
       <!--폰트 관련 css-->
@@ -18,16 +20,16 @@
           />
     
      <!--main css-->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index/main.css">
 
      <!--Header css(나중에 파일 분리)-->
-    <link rel = "stylesheet" href = "css/header.css">
+    <link rel = "stylesheet" href = "${pageContext.request.contextPath}/assets/css/index/header.css">
 
     <!--body css-->
-    <link rel="stylesheet" href="css/slick.css" media="screen" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index/slick.css" media="screen" />
 
     <!-- footer css (나중에 파일 분리)-->
-    <link href="css/footer.css  " rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/css/index/footer.css" rel="stylesheet">
   </head>
 
   <!--
@@ -60,23 +62,30 @@
                   </div>
                   <ul class="menu_name_list">
                       <li class="">
-                          <a href="/" class="">홈</a>
+                          <a href="/index/main.in" class="">홈</a>
                       </li>
                       <!--selectNav는 나중에 적용(클릭했을 때 파란줄)-->
                       <li class="selectedNav">
-                          <a href="" class="">품앗이 게시판</a>
+                          <a href="javascript:nextAlert();" class="">품앗이 게시판</a>
                       </li>
                       <li class="">
-                          <a href="#" class="" aria-label="">마이 페이지</a>
+                      		<c:choose>
+		                		<c:when test="${empty sessionScope.userEmail}">
+									<a href="/user/signupLogin.us">마이 페이지</a>
+		                		</c:when>
+			                	<c:otherwise>
+									<a href="${pageContext.request.contextPath}/mypage/boardApply.pa" class="" aria-label="">마이 페이지</a>
+			                	</c:otherwise>
+		                	</c:choose>
                       </li>
                       <li class="">
-                          <a href="#" class="" aria-label="">봉사 활동</a>
+                          <a href="javascript:nextAlert();" class="" aria-label="">봉사 활동</a>
                       </li>
                       <li class="">
-                          <a href="#" class="">참여내역</a>
+                          <a href="javascript:nextAlert();" class="">참여내역</a>
                       </li>
                       <li>
-                          <a href="#" class="">봉사 현황</a>
+                          <a href="javascript:nextAlert();" class="">봉사 현황</a>
                       </li>
                   </ul>
                   <aside class="Aside_box">
@@ -94,10 +103,17 @@
                               </button>
                           </li>
                           <li>
-                              <button class="signUpButton" type="button">회원가입/로그인</button>
+                              <c:choose>
+			                		<c:when test="${empty sessionScope.userEmail}">
+				                		<li><a href="${pageContext.request.contextPath}/user/signupLogin.us" class="button primary fit">회원가입/로그인</a></li>
+			                		</c:when>
+				                	<c:otherwise>
+				                		<li><a href="${pageContext.request.contextPath}/user/logout.us" class="button fit">로그아웃</a></li>
+				                	</c:otherwise>
+			                	</c:choose>
                           </li>
                           <li class="leftDivision">
-                              <a class="dashboardButton" href="/dashboard">기업 서비스</a>
+                              <a class="dashboardButton" href="javascript:nextAlert();">기업 서비스</a>
                           </li>                        
                       </ul>
                   </aside>
@@ -115,22 +131,22 @@
                 <li>
                   <img
                    
-                    src="../img/banner6.png"
+                    src="${pageContext.request.contextPath}/assets/images/banner6.png"
                   />
                 </li>
                 <li>
                   <img
-                  src="../img/banner2.jpg"
+                  src="${pageContext.request.contextPath}/assets/images/banner2.jpg"
                   />
                 </li>
                 <li>
                   <img
-                    src="../img/banner3.jpg"
+                    src="${pageContext.request.contextPath}/assets/images/banner3.jpg"
                   />
                 </li>
                 <li>
                   <img
-                    src="../img/banner4.jpg"
+                    src="${pageContext.request.contextPath}/assets/images/banner4.jpg"
                   />
                 </li>
                 <li>
@@ -146,111 +162,49 @@
             <hr>
             <div class="title_textalign">
               <div class="title__Wrapper">
-                <h2 class="title_header">품앗이 게시판 진행중</h2>        
+                <h2 class="title_header">품앗이 게시판</h2>        
               </div>
+              <a class="title__subtitle" href="${pageContext.request.contextPath}/board/boardListOk.me2">게시판 전체보기<span class="SvgIcon_SvgIcon__root__8vwon title__subtitle__icon__Hrpwd">
+                <svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 19 19">
+                      <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path></svg></span></a>
             </div>
             <div class="main__Category">
           
             <ul class="main_display">
-              <li class="main_content_list">
-                <a href="#">
-                  <div class="main_content__Thumbnail">
-                    <img src="../img/hot6.jpg" alt="LINE X Wanted Session 5-2" />
-                  </div>
-                  <p class="main_content_text">
-                    품앗이 사이트 개발 진행중<br />
-                  </p>
-                  <p class="main_content_innerText">
-                    HOT-6 팀이 품앗이 사이트를 개발 진행중입니다 <br>
-                    전체적으로 줄을 통일합시다
-                  </p>
-                  <div class="main_content_logo">
-                    <img
-                      src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Ffavicon%2F144x144.png&amp;w=60&amp;q=90"
-                      alt=""
-                    />
-                    <p>메인페이지 황영택</p>
-                  </div></a
-                >
-              </li>
-              <li class="main_content_list">
-                <a
-                  href="#"
-                  ><div
-                    class="main_content__Thumbnail"
-                  >
-                    <img
-                      src="https://www.ddazua.com/pluginfile.php/161289/local_courselist/thumbnailimg/2802/01_%ED%94%84%EB%A1%9C.png"
-                      alt=""
-                    />
-                  </div>
-                  <p class="main_content_text">
-                    배워서 바로 써먹는 JSP2
-                  </p>
-                  <p class="main_content_innerText">
-                    한동석 | 총 40강<br>
-                    수강기간 : 2022.10.10~2022.11.10
-                  </p>
-                  <div class="main_content_logo">
-                    <img
-                      src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Ffavicon%2F144x144.png&amp;w=60&amp;q=90"
-                      alt="wanted"
-                    />
-                    <p>월드클라스, 한동석</p>
-                  </div></a
-                >
-              </li>
-              <li class="main_content_list">
-                <a href="">
-                  <div class="main_content__Thumbnail">
-                    <img
-                      src="https://www.ddazua.com/pluginfile.php/154057/local_courselist/thumbnailimg/2572/02_%ED%94%84%EB%A1%9C.png"
-                      alt=""
-                    />
-                  </div>
-                  <p class="main_content_text">
-                    배워서 바로 써먹는 JSP1
-                  </p>
-                  <p class="main_content_innerText">
-                    한동석 | 총 40강<br>
-                    수강기간 : 2022.10.10~2022.11.10
-                  </p>
-                  <div class="main_content_logo">
-                    <img
-                      src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Ffavicon%2F144x144.png&amp;w=60&amp;q=90"
-                      alt="wanted"
-                    />
-                    <p>한동석</p>
-                  </div></a
-                >
-              </li>
-              <li class="main_content_list">
-                <a
-                  href=""
-                  ><div
-                    class="main_content__Thumbnail"
-                  >
-                    <img
-                      src="https://www.ddazua.com/pluginfile.php/132318/local_courselist/thumbnailimg/2147/04_%ED%94%84%EB%A1%9C.png"
-                      alt=""
-                    />
-                  </div>
-                  <p class="main_content_text">
-                    멘토씨리즈 파이썬
-                  </p>
-                  <p class="main_content_innerText">
-                    한동석 | 총 35강<br>
-                    수강기간 : 2022.10.10~2022.11.10
-                  </p>
-                  <div class="main_content_logo">
-                    <img
-                      src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Ffavicon%2F144x144.png&amp;w=60&amp;q=90"
-                      alt="wanted"
-                    />
-                    <p>한동석</p>
-                  </div></a
-                >
-              </li>
+	            <c:choose>
+					<c:when test="${not empty contentInfos and fn:length(contentInfos) > 0}">
+						<c:forEach var="contentInfo" items="${contentInfos}">
+							<li class="main_content_list">
+				                <a href="#">
+				                <%-- href="${pageContext.request.contextPath}/board/boardDetail.me2?boardId=${contentInfo.getBoardId}" --%>
+				                  <div class="main_content__Thumbnail">
+				                  <%-- 이미지 파일시스템이름 src="${pageContext.request.contextPath}/upload/파일시스템이름 --%>
+				                    <img src="${pageContext.request.contextPath}/assets/images/hot6.jpg" alt="LINE X Wanted Session 5-2" />
+				                  </div>
+				                  <p class="main_content_text">
+				                    <c:out value="${contentInfo.getBoardTextName()}"/><br />
+				                  </p>
+				                  <p class="main_content_innerText">
+				                    <c:out value="${contentInfo.getBoardMainText()}"/> <br>
+				                  </p>
+				                  <div class="main_content_logo">
+				                    <img
+				                      src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Ffavicon%2F144x144.png&amp;w=60&amp;q=90"
+				                      alt=""
+				                    />
+				                    <p><c:out value="${contentInfo.getUserName()}"/></p>
+				                  </div></a>
+				              </li>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+							<div class="no_content_innerText" style="text-align: center;">
+	                    		<div class="p_no_content_innerText">
+			                    	<c:out value="등록된 게시글이 없습니다"/>
+			                 	</div>
+		                 	</div>
+					</c:otherwise>
+				</c:choose>
             </ul>
           </div>
         </section>
@@ -265,163 +219,63 @@
               <div class="title_textalign">
                 <div class="title__Wrapper">
                   <h2 class="title_header">
-                    현재 모집중인 봉사활동
+                    홍보 게시판
                   </h2>
                 </div>
-                <a
-                  class="title__subtitle"
-                  href="#"
-                  >게시판 전체보기<span
-                    class="SvgIcon_SvgIcon__root__8vwon title__subtitle__icon__Hrpwd"
-                    ><svg
-                      class="SvgIcon_SvgIcon__root__svg__DKYBi"
-                      viewBox="0 0 19 19"
-                    >
-                      <path
-                        d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"
-                      ></path></svg></span
-                ></a>
+                <a class="title__subtitle" href="javascript:nextAlert();">게시판 전체보기<span class="SvgIcon_SvgIcon__root__8vwon title__subtitle__icon__Hrpwd">
+                <svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 19 19">
+                      <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path></svg></span></a>
               </div>
              
             </div>
             <ul class="main_board_list">
               <div
                 class="slick-slider articleBanner_marginBtm slick-initialized"
-                dir="ltr"
-              >
+                dir="ltr">
                 <div class="slick-list">
-                  <div
-                    class="slick-track"
-                    style="
-                      width: 2700px;
+                  <div class="slick-track"
+                    	style="
+                      width: 96%;
                       opacity: 1;
-                      transform: translate3d(0px, 0px, 0px);
-                    "
-                  >
-                    <div
-                      data-index="0"
-                      class="slick-slide slick-active slick-current"
-                      tabindex="-1"
-                      aria-hidden="false"
-                      style="outline: none; width: 270px"
-                    >
-                      <div>
-                        <li class="articleCard_a articleBanner__card">
-                          <a href="#" class="ArticleCard__link">
-                            <div class="Thumbnail_card undefined">
-                              <img
-                                src="../img/vol.jpg"
-                                alt=""
-                                class="Thumbnail_img undefined"
-                              />
-                            </div>
-                            <div class="undefined">
-                              <p class="articleCard_content">
-                                빨래밟기
-                              </p>
-                              <p
-                                class="ArticleCard__category"
-                              >
-                                #봉사 #저강도 #밟기
-                              </p>
-                            </div></a
-                          >
-                        </li>
-                      </div>
-                    </div>
-                    <div
-                      data-index="0"
-                      class="slick-slide slick-active slick-current"
-                      tabindex="-1"
-                      aria-hidden="false"
-                      style="outline: none; width: 270px"
-                    >
-                      <div>
-                        <li class="articleCard_a articleBanner__card">
-                          <a href="#" class="ArticleCard__link">
-                            <div class="Thumbnail_card undefined">
-                              <img
-                                src="../img/vol2.jpg"
-                                alt=""
-                                class="Thumbnail_img undefined"
-                              />
-                            </div>
-                            <div class="undefined">
-                              <p class="articleCard_content">
-                                짐 옮기기
-                              </p>
-                              <p
-                                class="ArticleCard__category"
-                              >
-                                #노동 #고강도 #뿌듯함
-                              </p>
-                            </div></a
-                          >
-                        </li>
-                      </div>
-                    </div>
-                    <div
-                      data-index="0"
-                      class="slick-slide slick-active slick-current"
-                      tabindex="-1"
-                      aria-hidden="false"
-                      style="outline: none; width: 270px"
-                    >
-                      <div>
-                        <li class="articleCard_a articleBanner__card">
-                          <a href="#" class="ArticleCard__link">
-                            <div class="Thumbnail_card undefined">
-                              <img
-                                src="../img/vol3.jpg"
-                                alt=""
-                                class="Thumbnail_img undefined"
-                              />
-                            </div>
-                            <div class="undefined">
-                              <p class="articleCard_content">
-                                안마하기
-                              </p>
-                              <p
-                                class="ArticleCard__category"
-                              >
-                                #안마 #저강도 #소외가족
-                              </p>
-                            </div></a
-                          >
-                        </li>
-                      </div>
-                    </div>
-                    <div
-                      data-index="0"
-                      class="slick-slide slick-active slick-current"
-                      tabindex="-1"
-                      aria-hidden="false"
-                      style="outline: none; width: 270px"
-                    >
-                      <div>
-                        <li class="articleCard_a articleBanner__card">
-                          <a href="#" class="ArticleCard__link">
-                            <div class="Thumbnail_card undefined">
-                              <img
-                                src="../img/vol4.jpg"
-                                alt=""
-                                class="Thumbnail_img undefined"
-                              />
-                            </div>
-                            <div class="undefined">
-                              <p class="articleCard_content">
-                                길거리 환경미화
-                              </p>
-                              <p
-                                class="ArticleCard__category"
-                              >
-                                #깨끗한 길거리 #저강도 #환경미화
-                              </p>
-                            </div></a
-                          >
-                        </li>
-                      </div>
-                    </div>
+                      transform: translate3d(0px, 0px, 0px);">
+                    <c:choose>
+                    	<c:when test="${not empty promotionInfos and fn:length(promotionInfos) > 0}">
+		                    <c:forEach var="promotionInfo" items="${promotionInfos}">
+		                    	<div data-index="0"
+			                      class="slick-slide slick-active slick-current"
+			                      tabindex="-1"
+			                      aria-hidden="false"
+			                      style="outline: none; width: 270px">
+			                      <div>
+			                        <li class="articleCard_a articleBanner__card">
+			                          <a href="#" class="ArticleCard__link">
+			                            <div class="Thumbnail_card undefined">
+			                              <img src="${pageContext.request.contextPath}/assets/images/vol.jpg"
+			                                alt=""
+			                                class="Thumbnail_img undefined"/>
+			                            </div>
+			                            <div class="undefined">
+			                              <p class="articleCard_content">
+			                                <c:out value="${promotionInfo.getBoardTextname()}"/><br />
+			                              </p>
+			                              <p class="ArticleCard__category">
+			                                <c:out value="${promotionInfo.getUserName()}"/>
+			                              </p>
+			                            </div></a>
+			                        </li>
+			                      </div>
+			                    </div>
+		                    </c:forEach>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<div class="no_content_innerText" style="text-align: center;">
+	                    		<div class="p_no_content_innerText">
+			                    	<c:out value="등록된 게시글이 없습니다"/>
+			                 	</div>
+		                 	</div>
+                    	</c:otherwise>
+                    </c:choose>
+                    
                   </div>
                 </div>
               </div>
@@ -439,10 +293,10 @@
               <div class="title_textalign">
                 <div class="title__Wrapper">
                   <h2 class="title_header">
-                    봉사 인증 게시판
+                    인증, 후기 게시판
                   </h2>
                 </div>
-                <a class="title__subtitle" href="#">게시판 전체보기
+                <a class="title__subtitle" href="javascript:nextAlert();">게시판 전체보기
                   <span class="SvgIcon_SvgIcon__root__8vwon title__subtitle__icon__Hrpwd">
                     <svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 19 19">
                     <path
@@ -456,124 +310,56 @@
                 class="slick-slider articleBanner_marginBtm slick-initialized"
                 dir="ltr"
               >
-                <div class="slick-list">
+                <div class="slick-list" >
                   <div
                     class="slick-track"
                     style="
-                      width: 2700px;
+                      width: 96%;
                       opacity: 1;
                       transform: translate3d(0px, 0px, 0px);
                     "
                   >
-                    <div
-                      data-index="0"
-                      class="slick-slide slick-active slick-current"
-                      style="outline: none; width: 270px"
-                    >
-                      <div>
-                        <li class="articleCard_a articleBanner__card">
-                          <a href="" class="ArticleCard__link">
-                            <div class="Thumbnail_card undefined">
-                              <img
-                                src="../img/loading2.gif"
-                                alt=""
-                                class="Thumbnail_img undefined"
-                              />
-                            </div>
-                            <div class="undefined">
-                              <p class="articleCard_content">
-                                빨간안경
-                              </p>
-                              <p class="ArticleCard__category">
-                                #마케팅·광고 #브랜딩 #취업/이직
-                              </p>
-                            </div></a
-                          >
-                        </li>
-                      </div>
-                    </div>
-                    <div
-                      class="slick-slide slick-active slick-current"
-                      style="outline: none; width: 270px"
-                    >
-                      <div>
-                        <li class="articleCard_a articleBanner__card">
-                          <a href="" class="ArticleCard__link">
-                            <div class="Thumbnail_card undefined">
-                              <img
-                                src="../img/loading2.gif"
-                                alt=""
-                                class="Thumbnail_img undefined"
-                              />
-                            </div>
-                            <div class="undefined">
-                              <p class="articleCard_content">
-                                빨간안경
-                              </p>
-                              <p
-                                class="ArticleCard__category"
-                              >
-                                #마케팅·광고 #브랜딩 #취업/이직
-                              </p>
-                            </div></a
-                          >
-                        </li>
-                      </div>
-                    </div>
-                    <div
-                      class="slick-slide slick-active slick-current"
-                      style="outline: none; width: 270px"
-                    >
-                      <div>
-                        <li class="articleCard_a articleBanner__card">
-                          <a href="#" class="ArticleCard__link">
-                            <div class="Thumbnail_card undefined">
-                              <img
-                                src="../img/loading2.gif"
-                                alt=""
-                                class="Thumbnail_img undefined"
-                              />
-                            </div>
-                            <div class="undefined">
-                              <p class="articleCard_content">
-                                빨간안경
-                              </p>
-                              <p class="ArticleCard__category">
-                                #마케팅·광고 #브랜딩 #취업/이직
-                              </p>
-                            </div>
-                          </a>
-                        </li>
-                      </div>
-                    </div>
-                    <div
-                      class="slick-slide slick-active slick-current"
-                      style="outline: none; width: 270px"
-                    >
-                      <div>
-                        <li class="articleCard_a articleBanner__card">
-                          <a href="#" class="ArticleCard__link">
-                            <div class="Thumbnail_card undefined">
-                              <img
-                                src="../img/loading2.gif"
-                                alt=""
-                                class="Thumbnail_img undefined"
-                              />
-                            </div>
-                            <div class="undefined">
-                              <p class="articleCard_content">
-                                빨간안경
-                              </p>
-                              <p
-                                class="ArticleCard__category"
-                              >
-                                #마케팅·광고 #브랜딩 #취업/이직
-                              </p>
-                            </div></a
-                          >
-                        </li>
-                      </div>
-                    </div>
+                   <c:choose>
+                    	<c:when test="${not empty reviewInfos and fn:length(reviewInfos) > 0}">
+		                    <c:forEach var="reviewInfo" items="${reviewInfos}">
+		                    	<div
+			                      data-index="0"
+			                      class="slick-slide slick-active slick-current"
+			                      style="outline: none; width: 270px"
+			                    >
+			                      <div>
+			                        <li class="articleCard_a articleBanner__card">
+			                          <a href="" class="ArticleCard__link">
+			                            <div class="Thumbnail_card undefined">
+			                              <img
+			                                src="${pageContext.request.contextPath}/assets/images/loading2.gif"
+			                                alt=""
+			                                class="Thumbnail_img undefined"
+			                              />
+			                            </div>
+			                            <div class="undefined">
+			                              <p class="articleCard_content">
+			                                <c:out value="${reviewInfo.getBoardTextname()}"/><br />
+			                              </p>
+			                              <p class="ArticleCard__category">
+			                                <c:out value="${reviewInfo.getUserName()}"/>
+			                              </p>
+			                            </div></a
+			                          >
+			                        </li>
+			                      </div>
+			                    </div>
+		                    </c:forEach>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<div class="no_content_innerText" style="text-align: center;">
+	                    		<div class="p_no_content_innerText">
+			                    	<c:out value="등록된 게시글이 없습니다"/>
+			                 	</div>
+		                 	</div>
+                    	</c:otherwise>
+                    </c:choose> 
+                    
                   </div>
                 </div>
               </div>
@@ -589,7 +375,7 @@
           <div class="NavLinks_NavLinks__logo__MCbfZ">
             <!--이곳에 기업의 로고가 들어갑니다-->
             <img
-              src="../img/hot6.jpg"
+              src="${pageContext.request.contextPath}/assets/images/hot6.jpg"
               alt="wanted"
               style="width: 80px; height: 50px;"
             />  
@@ -689,6 +475,11 @@
     </footer>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+  	window.onload= function(){
+  		
+  	}
+  </script>
 
   <script language="JavaScript">
     $(document).ready(function () {
@@ -713,5 +504,10 @@
         });
       }
     });
+  </script>
+  <script type="text/javascript">
+  	function nextAlert(){
+  		alert("서비스 준비 중");
+  	};
   </script>
 </html>

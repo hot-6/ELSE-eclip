@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,9 +21,12 @@
     />
     <meta name="next-head-count" content="27" />
     <title>핫식스 | 품앗이</title>
+    <!-- title에서 글씨옆에 로고 -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/hot6.jpg">
+    
 <<<<<<< HEAD
     <!-- ㅡmain css-->
-    <link rel="stylesheet" href="src/main/css/header.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index/header.css" crossorigin="anonymous" />
 =======
 >>>>>>> 64f120a9a720b89b082bfc6f9b9c483f3bcf75b9
     <link
@@ -32,8 +36,8 @@
     />
     <!--폰트관련-->
 
-    <link rel="stylesheet" href="../css/board.css" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="../css/boardParticipation.css" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/board/board.css" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/board/boardParticipation.css" crossorigin="anonymous"/>
     <!-- 게시판 관련 css -->
     <link
       rel="stylesheet"
@@ -43,9 +47,9 @@
     />
     <!--header 관련 css-->
     
-    <link rel="stylesheet" href="../main/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index/header.css">
     <!--footer 관련 css-->
-    <link href="../main/css/footer.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/css/index/footer.css" rel="stylesheet">
 
       <!--폰트 관련 css ***** 폰트 관련 css는 한 번만 적용-->
   <link
@@ -80,12 +84,12 @@
                         <a href="/" class="">홈</a>
                     </li>
                     <!--selectNav는 나중에 적용-->
-                    <li class="selectedNav">
-                        <a href="" class="">품앗이 게시판</a>
-                    </li>
-                    <li class="">
-                        <a href="#" class="" aria-label="">마이 페이지</a>
-                    </li>
+         <li class="selectedNav">
+                            <a href="${pageContext.request.contextPath}/board/boardListOk.me2" class="">품앗이 게시판</a>
+                        </li>
+                        <li class="">
+                            <a href="${pageContext.request.contextPath}/mypage/myPageMain.pa" class="" aria-label="">마이 페이지</a>
+                        </li>
                     <li class="">
                         <a href="#" class="" aria-label="">봉사 활동</a>
                     </li>
@@ -134,7 +138,7 @@
                           </div>
                       </section>
                       <section class="partHeader_className">
-                        <h2>감귤 농사 체험하기</h2>
+                        <h2><c:out value="${board.getBoardTextName()}"/></h2>
                         <div>
                           <h6 style="max-width: calc(100% - 88px);">
                             <button class="category">#수확 봉사</button>
@@ -146,7 +150,8 @@
                       <div class="JobContent_descriptionWrapper">
                         <section class="JobDescription_JobDescription">
                           <p>
-                            <span>
+                             <span><pre><c:out value="${board.getBoardMainText()}"/></pre></span>
+                            <!-- <span>
                               'Buying Square'는 패션/뷰티/골프/라이프스타일 분야의 전세계 명품 브랜드 2,400개 이상을
                               <br>
                               아시아 법인사업자에게 공급하는 '명품 B2B 플랫폼' 스타트업 입니다. 
@@ -159,27 +164,27 @@
                               <br>
                               <br>
                               - 대화할 때는 항상 상대방의 입장부터 생각합니다.
-                            </span>
+                            </span> -->
 
                           </p>
-                          <h6>주요업무</h6>
+                          <!-- <h6>주요업무</h6> -->
 
 
                         </section>
                         <hr class="partContent_divider">
                         <section class="partWorkPlace_classname">
                           <div>
-                            <span class="header">마감일</span>
-                            <span class="body">상시</span>
+                            <span class="header">업무강도</span>
+                            <span class="body">${board.getBoardWorkHard()}</span>
                           </div>
                           <div>
-                            <span class="header">근무지역</span>
-                            <span class="body">코리아it아카데미</span>
+                            <span class="header">날짜 및 시간</span>
+                            <span class="body">${board.getBoardWorkDate()}&nbsp;&nbsp;${board.getBoardWorkTime()}</span>
                           </div>
-                          <a href="" class="NaverMap_NaverMap">
-                            <img src="../imgs/mapping.png" alt="Map with company address">
-
-                          </a>
+                          <div>
+                            <span class="header">지역</span>
+                            <span class="body"><c:out value="${board.getBoardWorkArea()}"/></span>
+                          </div>
                         </section>
                        
                       </div>
@@ -200,22 +205,34 @@
                               <p>5명</p>
                             </li>
                           </ul>
-                          
                         </div>
-                        <div class="applyBtn_container">
-                          <div class="applyBtn_container_item">
-                            <button class="bookmarkBtn_container">관심목록 추가</button>
-                          </div>
-
-                          
-                        </div>
-                        <div class="applyBtn_container">
-                          <div class="applyBtn_container_item">
-                            <button class="bookmarkBtns_container">참여신청</button>
-                          </div>
-
-                          
-                        </div>
+                        
+                        <c:choose>
+                         <c:when test="${sessionScope.userNum == board.getUserNum()}"> 
+                           <div class="applyBtn_container">
+                             <div class="applyBtn_container_item">
+                               <button class="bookmarkBtn_container">수정</button>
+                             </div>
+                           </div>
+                           <div class="applyBtn_container">
+                             <div class="applyBtn_container_item">
+                               <button class="bookmarkBtns_container">삭제</button>
+                             </div>
+                           </div>
+                        </c:when>
+                        <c:otherwise>
+                           <div class="applyBtn_container">
+                             <div class="applyBtn_container_item">
+                               <button class="bookmarkBtn_container">관심목록 추가</button>
+                             </div>
+                           </div>
+                           <div class="applyBtn_container">
+                             <div class="applyBtn_container_item">
+                               <button class="bookmarkBtns_container">참여신청</button>
+                             </div>
+                           </div>
+                        </c:otherwise>
+                        </c:choose>
 
                       </header>
                     </div>
@@ -232,7 +249,7 @@
       <div class="NavLinks_NavLinks__logo__MCbfZ">
         <!--이곳에 기업의 로고가 들어갑니다-->
         <img
-          src="../img/hot6.jpg"
+          src="${pageContext.request.contextPath}/assets/images/hot6.jpg"
           alt="wanted"
           style="width: 80px; height: 50px;"
         />  

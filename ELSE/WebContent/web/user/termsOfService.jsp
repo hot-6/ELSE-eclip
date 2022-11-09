@@ -42,95 +42,24 @@
                         <img src="https://static.wanted.co.kr/images/profile_default.png" alt="user thumbnail" class="AccountSettingsButton_AccountSettingsButton__img__y0yJE">
                         <span class="AccountSettingsButton_AccountSettingsButton__email__YrL5v">${sessionScope.userEmail}</span>
                         <div class="AccountSettingsButton_AccountSettingsButton__buttonWrapper__j3VmF">
-                            <span>계정 설정</span>
-                            <span class="SvgIcon_SvgIcon__root__8vwon AccountSettingsButton_AccountSettingsButton__icon__56Qki">
-                                <svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 18 18">
-                                    <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path>
-                                </svg>
-                            </span>
                         </div>
                     </a>
                     <!-- 약관 동의서 -->
                     <div class="Agreement_Agreement__wrapper__AsfFo">
                         <div class="style_wrapper__yBOLk Agreement_Agreement__checkboxAll__p_wxN">
-                            <div class="style_check__N8T_o">
-                                <svg width="24" height="24" color="#ececec" viewBox="0 0 24 24">
-                                    <path fill="currentColor" d="M18.75 21.75H5.25a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v13.5a3 3 0 0 1-3 3zm0-1.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v13.5a1.5 1.5 0 0 0 1.5 1.5h13.5z"></path>
-                                </svg>
-                            </div>
+                        	
                             <div class="style_label__Qjlun">
-                                <input type="checkbox" name="allAgreement">전체 동의
+                                우편 번호
                             </div>
                         </div>
                         <hr class="Divider_Divider__root__f2LD0">
-                        <div class="style_wrapper__yBOLk Agreement_Agreement__checkbox__gNuLN">
-                            <div class="style_check__N8T_o">
-                                <svg width="24" height="24" color="#ececec" viewBox="0 0 24 24">
-                                    <path fill="currentColor" d="M18.75 21.75H5.25a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v13.5a3 3 0 0 1-3 3zm0-1.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v13.5a1.5 1.5 0 0 0 1.5 1.5h13.5z"></path>
-                                </svg>
-                            </div>
-                            <div class="style_label__Qjlun">
-                                <input type="checkbox" name="acceptTerms">원티드 이용 약관 동의 (필수)
-                                <div class="Agreement_Agreement__linkWrapper__64oW6">
-                                    <a href="https://help.wanted.co.kr/hc/ko/articles/360035844551" rel="noopener noreferrer" target="_blank" class="Agreement_Agreement__link__BZIYd">자세히</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="style_wrapper__yBOLk Agreement_Agreement__checkbox__gNuLN">
-                            <div class="style_check__N8T_o">
-                                <svg width="24" height="24" color="#ececec" viewBox="0 0 24 24">
-                                    <path fill="currentColor" d="M18.75 21.75H5.25a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v13.5a3 3 0 0 1-3 3zm0-1.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v13.5a1.5 1.5 0 0 0 1.5 1.5h13.5z"></path>
-                                </svg>
-                            </div>
-                            <div class="style_label__Qjlun">
-                                <input type="checkbox" name="acceptPrivacy">개인정보 수집 및 이용 동의 (필수)
-                                <div class="Agreement_Agreement__linkWrapper__64oW6">
-                                    <a href="https://help.wanted.co.kr/hc/ko/articles/360040127872" rel="noopener noreferrer" target="_blank" class="Agreement_Agreement__link__BZIYd">자세히</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="style_wrapper__yBOLk Agreement_Agreement__checkbox__gNuLN">
-                            <div class="style_check__N8T_o">
-                                <svg width="24" height="24" color="#ececec" viewBox="0 0 24 24">
-                                    <path fill="currentColor" d="M18.75 21.75H5.25a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v13.5a3 3 0 0 1-3 3zm0-1.5a1.5 1.5 0 0 0 1.5-1.5V5.25a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v13.5a1.5 1.5 0 0 0 1.5 1.5h13.5z"></path>
-                                </svg>
-                            </div>
-                            <div class="style_label__Qjlun">
-                                <input type="checkbox" name="allNotificationAgreement">채용 소식, 커리어 콘텐츠, 이벤트 등 맞춤 정보 받기
-                            </div>
-                        </div>
-                        <div class="Agreement_Agreement__notificationWrapper__1OhHR">
-                            <div class="style_wrapper__yBOLk Agreement_Agreement__checkbox__gNuLN">
-                                <div class="style_check__N8T_o">
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="https://www.w3.org/2000/svg">
-                                        <path d="M1 5L5 9L13 1" stroke="#CCCCCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                </div>
-                                <div class="style_label__Qjlun">
-                                    <input type="checkbox" name="acceptEventEmail">이메일
-                                </div>
-                            </div>
-                            <div class="style_wrapper__yBOLk Agreement_Agreement__checkbox__gNuLN">
-                                <div class="style_check__N8T_o">
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="https://www.w3.org/2000/svg">
-                                        <path d="M1 5L5 9L13 1" stroke="#CCCCCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                </div>
-                                <div class="style_label__Qjlun">
-                                    <input type="checkbox" name="acceptEventSms">문자 메시지
-                                </div>
-                            </div>
-                            <div class="style_wrapper__yBOLk Agreement_Agreement__checkbox__gNuLN">
-                                <div class="style_check__N8T_o">
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="https://www.w3.org/2000/svg">
-                                        <path d="M1 5L5 9L13 1" stroke="#CCCCCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                </div>
-                                <div class="style_label__Qjlun">
-                                    <input type="checkbox" name="acceptEventPush">앱 푸시
-                                </div>
-                            </div>
-                        </div>
+                        <div style="display:flex;">
+	                           <input type="text" name="userZipcode" id="userZipcode" placeholder="우편번호">
+	                           <input type="button" onclick="find()" value="우편번호 찾기"><br>
+	                   	</div>
+                        <br>
+                        <input type="text" name="userAddress" id="userAddress" placeholder="주소">
+                        <input type="text" name="userAddressDetail" id="userAddressDetail" placeholder="상세주소">
                     </div>
                 </div>
                 <!-- 하단 : 동의하고 계속하기 버튼 -->
@@ -145,4 +74,8 @@
         </div>
     </div>
 </body>
+<script src="${pageContext.request.contextPath}/assets/js/user/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/user/termPlusCheck.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/user/zipCode.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </html>

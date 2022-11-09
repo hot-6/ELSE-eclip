@@ -402,6 +402,7 @@ svg:not(:root) {
     flex: 1 1;
     font-size: 15px;
     color: #666;
+    margin-left: 3px;
 }
 
 .style_wrapper__yBOLk input[type=checkbox] {

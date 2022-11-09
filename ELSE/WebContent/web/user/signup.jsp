@@ -26,7 +26,7 @@
                     <!-- 상단(회원가입) 부분 -->
                     <div class="css-1d04e6k">
                         <div class="css-1i6jck">
-                            <button type="button" class="css-1j6p3kf">
+                            <%-- <button type="button" class="css-1j6p3kf" onclick="location.href=${pageContext.request.contextPath}/user/signupLogin.us"> --%>
                                 <span class="css-1ihsymv">
                                     <svg viewBox="0 0 18 18" class="css-ckhhlt">
                                         <path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path>
@@ -85,16 +85,8 @@
                                 </div>
                                 <div class="css-l9nhxs">
                                     <input id="userPhoneNum" name="userPhoneNum" type="text" placeholder="(예시) 01013245768" name="mobile" data-testid="Input_mobile" class="css-wq6t17" value="">
-                                    <button type="button" data-testid="Button" class="css-122uu24" disabled="">
-                                        <span data-testid="Typography" color="var(--theme-palette-colors-black-100)" class="css-m3uta">
-                                            인증번호 받기
-                                        </span>
-                                    </button>
                                 </div>
                                 <!-- p태그 추가? : 조건에 맞지 않으면 '올바른 인증번호를 입력해주세요' 빨간색으로 밑에 나타내기 -->
-                                <div class="css-l9nhxs">
-                                    <input type="text" placeholder="인증번호를 입력해주세요." name="authCode" data-testid="Input_authCode" readonly="" class="css-wq6t17" value="">
-                                </div>
                             </div>
                             <div class="css-11ayfj7">
                                 <label data-testid="Typography" color="var(--theme-palette-colors-gray-600)" for="password" class="css-1isrpua">
@@ -107,6 +99,22 @@
                             <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1d2ssup">
                                 영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 16자 이하로 입력해주세요.
                             </p>
+                            <div class="css-11ayfj7">
+                                <label data-testid="Typography" color="var(--theme-palette-colors-gray-600)" for="email" class="css-1isrpua">
+                                    우편 번호
+                                </label>
+                            </div>
+                            <div class="Agreement_Agreement__wrapper__AsfFo">
+			                   	<div class="css-l9nhxs">
+		                           <input type="text" name="userZipcode" id="userZipcode" placeholder="우편번호" class="css-wq6t17" value="">
+		                           <span>
+			                           <input type="button" onclick="find()" value="우편번호 찾기" class="btn_address css-122uu24"><br>
+		                           </span>
+                                </div>
+		                        <br>
+		                        <input type="text" name="userAddress" id="userAddress" placeholder="주소" class="css-wq6t17" value="">
+		                        <input type="text" name="userAddressDetail" id="userAddressDetail" placeholder="상세주소" class="css-wq6t17" value="">
+		                    </div>
                             <!-- 동의서 -->
                             <div class="css-hif188">
                             <input type="checkbox" class="checkbox_style termAll">
@@ -150,6 +158,7 @@
                             <div class="test_div" >
                                 ____________________________________________________
                             </div>
+                            
                             <!-- 하단 : 가입하기 -->
                             
                             <div class="css-1cusgjg">
@@ -175,5 +184,6 @@
 <script src="${pageContext.request.contextPath}/assets/js/user/breakpoints.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/user/checkPw.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/user/termcheck.js"></script>
-
+<script src="${pageContext.request.contextPath}/assets/js/user/zipCode.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </html>

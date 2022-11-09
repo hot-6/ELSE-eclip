@@ -8,13 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지</title>
-    <link rel="stylesheet" href="..\css\myPage.css" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mypage/myPage.css" />
 
         <!--header 관련 css-->
     
-        <link rel="stylesheet" href="../main/css/header.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index/header.css">
         <!--footer 관련 css-->
-        <link href="../main/css/footer.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/assets/css/index/footer.css" rel="stylesheet">
     
           <!--폰트 관련 css ***** 폰트 관련 css는 한 번만 적용-->
       <link
@@ -47,10 +47,10 @@
                         </li>
                         <!--selectNav는 나중에 적용-->
                         <li class="selectedNav">
-                            <a href="" class="">품앗이 게시판</a>
+                            <a href="${pageContext.request.contextPath}/board/boardListOk.me2" class="">품앗이 게시판</a>
                         </li>
                         <li class="">
-                            <a href="#" class="" aria-label="">마이 페이지</a>
+                            <a href="${pageContext.request.contextPath}/mypage/myPageMain.pa" class="" aria-label="">마이 페이지</a>
                         </li>
                         <li class="">
                             <a href="#" class="" aria-label="">봉사 활동</a>
@@ -98,49 +98,52 @@
         <div class="mypage" id="mpDIV">
             <!-- 왼쪽 개인정보 구성화면 -->
             <div class="userInfo" style="width: 17%; line-height: 2; margin-left: 14.5%; background-color: white; float: left;" id="mpDIV">
-                <!-- 유저 프로필 사진 -->
-                <div class="userProfile" id="mpDIV">
-                    <img src="../img/pinggu.jpeg" class="userProfile" style="margin-bottom:10%;">
-                    <div class="userProfile_Upload" id="mpDIV">
-                    </div>
-                </div>
                 <!-- 유저 개인정보 -->
                 <div style="margin-bottom: 5%;" id="mpDIV">
                       <div class="userName" id="mpDIV">
-                          <h1>홍길동</h1>
-                          <p style="font-size: 20px;">hongGD@gmail.com</p> 
+                          <h1><c:out value="${sessionScope.userName}"/></h1>
+                          <p style="font-size: 20px;"><c:out value="${sessionScope.userEmail}"/></p> 
                       </div>
                       
                       <div class="userPhoneNumber" id="mpDIV">
-                          <p style="font-size: 20px;">010-1234-5678</p> 
+                          <p style="font-size: 20px;"><c:out value="${sessionScope.userPhonenum}"/></p> 
                       </div>
                       
                           <h3 style="display: inline-flex">관심태그 : </h3>
-                          <p style="display: inline-flex"> 과일, 나눔, 체험</p>
+
                       
                 </div>
                       
                       <!-- <hr class="userinfo_hr" style="border-color:#e3dede; border:3px 0 0 0"> -->
                       
                       <div class="point" style="text-align: left;">
-                          <p style="display: inline-flex; font-size: 25px;  margin-left: 10%;" id="bold">포인트 : </p>
-                          <p style="display: inline-flex; font-size: 25px;" id="bold"> 10,000 P</p>
+                          <p style="display: inline-flex; font-size: 25px;  margin-left: 10%;" id="bold">포인트 : <c:out value="${sessionScope.userPoint}"/></p>
+                          <p style="display: inline-flex; font-size: 25px;" id="bold"> <c:out value="${sessionScope.userTrust}"/> P</p>
                       </div>
                       
-                      <div class="point">
+                  <div class="point">
                         <div class="list" id="left" id="mpDIV">
-                          <p style="font-size: 25px;">신청내역</p>
+    
+                           <a href="/mypage/boardApply.pa" class="lista">
+                        <p style="font-size: 22px; text-align:center;">게시글내역</p>
+                     </a>
                         </div>
                         <div class="likeList" id="left" id="mpDIV">
-                          <p style="font-size: 25px;">관심목록</p>
+                             <a href="/mypage/interestElse.pa" class="lista">
+                        <p style="font-size: 22px; text-align:center;">관심글내역</p>
+                     </a>
                         </div>
                         <div class="undo" id="left" id="mpDIV">
-                          <p style="font-size: 25px;">신청취소</p>
+                          <a href="/mypage/submitApply.pa" class="lista">
+                        <p style="font-size: 22px; text-align:center;">신청글내역</p>
+                     </a>
                         </div>
                       </div>
                       <div class="point">
                         <div class="userOption" id="left" id="mpDIV"> 
-                          <p style="font-size: 25px;">계정설정</p>
+                          <a href="/mypage/myInformation.pa" class="lista">
+                        <p style="font-size: 22px; text-align:center;">계정 설정</p>
+                     </a>
                         </div>
                       </div>
                       <div id="mpDIV"></div>
@@ -150,26 +153,27 @@
                       <h1 style="text-align: left; font-size: 20px; margin-left: 5%;">지원현황</h1>
                       <div id="mpDIV">
                           <div style="float: left; width: 24%;" id="mpDIV">
-                            <h1> 0</h1>
-                              <p style="font-size: 20px;"> 지원완료 </p>
+                            <h1> <c:out value="${boardCount}"/></h1>
+                              <p style="font-size: 20px;"> 게시글 </p>
+                          </div>
+                          <div class="supportList" style="float: left; width: 24%;">
+                            <h1><c:out value="${interCount}"/></h1>
+                              <p style="font-size: 20px;"> 관심글 </p> 
+                          </div>
+                          <div class="supportList" style="float: left; width: 24%;">
+                            <h1><c:out value="${partiCount}"/></h1>
+                              <p style="font-size: 20px;"> 참여글 </p> 
                           </div>
                           <div class="supportList" style="float: left; width: 24%;">
                             <h1>0</h1>
-                              <p style="font-size: 20px;"> 지원서 열람 </p> 
-                          </div>
-                          <div class="supportList" style="float: left; width: 24%;">
-                            <h1>2</h1>
-                              <p style="font-size: 20px;"> 참여이력 </p> 
-                          </div>
-                          <div class="supportList" style="float: left; width: 24%;">
-                            <h1>3</h1>
-                              <p style="font-size: 20px;"> 스크랩 </p> 
+                              <p style="font-size: 20px;"> 문의글 </p> 
                           </div>
                       </div>
                       <div></div>
                       <div class="report">
                       </div>
                   </div>
+
                   <!-- 중앙에 들어갈 내용 -->
                   <div class="profile" id="mpDIV">
                     <div style="margin-bottom: 5%;" id="mpDIV">
@@ -229,7 +233,7 @@
         <div class="NavLinks_NavLinks__logo__MCbfZ" >
           <!--이곳에 기업의 로고가 들어갑니다-->
           <img
-            src="../img/hot6.jpg"
+            src=""${pageContext.request.contextPath}/assets/images/hot-6.jpg""
             alt="wanted"
             style="width: 80px; height: 50px;"
           />  

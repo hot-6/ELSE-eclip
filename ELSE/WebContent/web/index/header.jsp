@@ -105,6 +105,19 @@
                 <button class="signUpButton" type="button">
                   회원가입/로그인
                 </button>
+                
+                <ul class="signUpButton">
+                	<c:choose>
+                		<c:when test="${empty sessionScope.userEmail}">
+	                		<li><a href="${pageContext.request.contextPath}/user/signupLogin.us" class="button primary fit">회원가입/로그인</a></li>
+                		</c:when>
+	                	<c:otherwise>
+	                		<li><a href="${pageContext.request.contextPath}/user/logout.us" class="button fit">로그아웃</a></li>
+	                	</c:otherwise>
+                	</c:choose>
+                </ul>
+                
+                
               </li>
               <li class="leftDivision">
                 <a class="dashboardButton" href="/dashboard">기업 서비스</a>

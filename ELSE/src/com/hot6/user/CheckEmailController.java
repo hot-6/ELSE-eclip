@@ -27,10 +27,11 @@ public class CheckEmailController implements Execute {
 			
 			UserVO userVO = new UserVO();
 			userVO.setUserEmail(checkEmailVal);
+			result.setRedirect(true);
 			result.setPath(req.getContextPath() + "/user/signup.us");
 			
 		}else { // false = 이메일 있을 때
-
+			result.setRedirect(true);
 			result.setPath(req.getContextPath() + "/user/signupPw.us");	
 			
 		}

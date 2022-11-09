@@ -4,6 +4,8 @@
 	let checkPwPw = document.getElementById("checkPwPw");
 	let userPhoneNum = document.getElementById("userPhoneNum");
 	let userName = document.getElementById("userName");
+	let userAddress = document.getElementById("userAddress");
+	let userAddressDetail = document.getElementById("userAddressDetail");
 	
 	$all.on("click", function(){
 		$inputs.prop("checked", $(this).is(":checked"));
@@ -28,7 +30,7 @@
 	
 	
 	function buttonAble(){
-		if($all.is(":checked")&&userName.value!=""&&checkPww.value!="" && checkPwPw.value == checkPww.value &&userPhoneNum.value != ""){
+		if($all.is(":checked")&&userName.value!=""&&checkPww.value!="" && checkPwPw.value == checkPww.value &&userPhoneNum.value != "" && userAddress.value != "" && userAddressDetail.value != ""){
 			$active.removeAttr("disabled");
 		}
 	};

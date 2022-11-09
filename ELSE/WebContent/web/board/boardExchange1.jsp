@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,9 +21,12 @@
     />
     <meta name="next-head-count" content="27" />
     <title>핫식스 | 품앗이</title>
+    <!-- title에서 글씨옆에 로고 -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/hot6.jpg">
+    
 <<<<<<< HEAD
     <!-- ㅡmain css-->
-    <link rel="stylesheet" href="src/main/css/header.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index/header.css" crossorigin="anonymous" />
 =======
 >>>>>>> 64f120a9a720b89b082bfc6f9b9c483f3bcf75b9
     <link
@@ -32,8 +36,7 @@
     />
 
     <!--폰트관련-->
-
-    <link rel="stylesheet" href="../css/boardExchange.css" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/board/boardExchange.css" crossorigin="anonymous"/>
     <!-- 게시판 관련 css -->
     <link
       rel="stylesheet"
@@ -43,10 +46,9 @@
     />
 
   <!--header 관련 css-->
-    
-  <link rel="stylesheet" href="../main/css/header.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index/header.css">
   <!--footer 관련 css-->
-  <link href="../main/css/footer.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/assets/css/index/footer.css" rel="stylesheet">
 
     <!--폰트 관련 css ***** 폰트 관련 css는 한 번만 적용-->
 <link
@@ -54,12 +56,9 @@
   type="text/css"
   href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.3/dist/web/static/pretendard-dynamic-subset.css"
   />
-
-
-
   </head>
+  
   <body style="background-color: white;">
-
   <!--header 적용 시작-->
   <div id="__next">
     <div class="NavBar_container">
@@ -82,11 +81,11 @@
                     </li>
                     <!--selectNav는 나중에 적용-->
                     <li class="selectedNav">
-                        <a href="" class="">품앗이 게시판</a>
-                    </li>
-                    <li class="">
-                        <a href="#" class="" aria-label="">마이 페이지</a>
-                    </li>
+                            <a href="${pageContext.request.contextPath}/board/boardListOk.me2" class="">품앗이 게시판</a>
+                        </li>
+                        <li class="">
+                            <a href="${pageContext.request.contextPath}/mypage/myPageMain.pa" class="" aria-label="">마이 페이지</a>
+                        </li>
                     <li class="">
                         <a href="#" class="" aria-label="">봉사 활동</a>
                     </li>
@@ -129,264 +128,73 @@
         
         <article class="board_exchange_labor">
             <header class="board_exchange_labor_title">
-                <h2>품앗이 게시판</h2>
-                <h2>홍보 게시판</h2>
-                <h2>인증·후기 게시판</h2>
+               <li><a href="${pageContext.request.contextPath}/board/boardExchange1.me2" class="button boardExchange1 board">품앗이 게시판</a></li>
+               <li><a href="${pageContext.request.contextPath}/board/boardPromote.me2" class="button boardPromote board">홍보 게시판</a></li>
+               <li><a href="${pageContext.request.contextPath}/board/boardEpilogue.me2" class="button boardEpilogue board">인증·후기 게시판</a></li>
                 <br>
-                <button type="button" class="board_headerBtn">
+                <button type="button" class="board_headerBtn" onclick="location.href='${pageContext.request.contextPath}/board/exchangeRegister.me2'">
                     <span class="board_headerlabel">등록</span>
                 </button>
             </header>
             <div class="List_list">
                 <ul class="exchange_list">
-                  <li>
+                    <c:choose>
+                    <c:when test="${not empty boards and fn:length(boards) > 0}">
+                    <c:forEach var="board" items="${boards}">
+                   <li>
                     <div class="list_card">
-                      <a href="">
-                        <header style="background-image: url(../img/nogada.jpg)">
-                    
+                     <a href="${pageContext.request.contextPath}/board/boardParticipation.me2?boardId=${board.getBoardId()}">
+                      <%-- <a href="${pageContext.request.contextPath}/web/board/boardParticipation.jsp" class="button boardParticipation"> --%>
+                        <header style="background-image: url(${pageContext.request.contextPath}/assets/images/nogada.jpg)">
                           <button class="bookmarkBtn" type="button"></button>
                         </header>
                         <div class="body">
-                            <div class="card_position">거기 자네 삽질 잘하는가</div>
+                            <div class="card_position"><c:out value="${board.getBoardTextName()}"/></div>
                             <div class="card_deadline">모집중</div>
-                            
-                            <div class="card_work_intensity">업무 강도 : 상</div>
-                            <div class="card_location">강릉</div>
-                            <div class="card_work_time">봉사 시간 : 10:00~14:00</div>
+                           <div class="card_work_intensity">업무 강도 : <c:out value="${board.getBoardWorkHard()}"/></div>
+                            <div class="card_location"><c:out value="${board.getBoardWorkArea()}"/></div>
+                            <%-- <div class="card_work_date">봉사 날짜 : <c:out value="${board.getBoardWorkDate()}"/></div> --%>
+                            <div class="card_work_time">봉사 시간 : <c:out value="${board.getBoardWorkTime()}"/></div>
                         </div>
                       </a>
                     </div>
-                  </li>
-
-                  <li>
-                    <div class="list_card">
-                      <a href="">
-                        <header style="background-image: url(../img/tree.jpg)">
-                    
-                          <button class="bookmarkBtn" type="button"></button>
-                        </header>
-                        <div class="body">
-                            <div class="card_position">야 식목일이다</div>
-                            <div class="card_deadline">모집중</div>
-                            
-                            <div class="card_work_intensity">업무 강도 : 중</div>
-                            <div class="card_location">평택</div>
-                            <div class="card_work_time">봉사 시간 : 10:00~14:00</div>
-                        </div>
-                      </a>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div class="list_card">
-                      <a href="">
-                        <header style="background-image: url(../img/fish.jpg)">
-                    
-                          <button class="bookmarkBtn" type="button"></button>
-                        </header>
-                        <div class="body">
-                            <div class="card_position">새우잡이 가보자이</div>
-                            <div class="card_deadline">검토중</div>
-                            
-                            <div class="card_work_intensity">업무 강도 : 최상</div>
-                            <div class="card_location">속초</div>
-                            <div class="card_work_time">봉사 시간 : 01:00~10:00</div>
-                        </div>
-                      </a>
-                    </div>
-                  </li>
-                  
-
-
-                  <li>
-                    <div class="list_card">
-                      <a href="">
-                        <header style="background-image: url(../img/gamgle.jpg)">
-                    
-                          <button class="bookmarkBtn" type="button"></button>
-                        </header>
-                        <div class="body">
-                            <div class="card_position">무사 감귤 안따맨?</div>
-                            <div class="card_deadline">마감</div>
-                            
-                            <div class="card_work_intensity">업무 강도 : 중</div>
-                            <div class="card_location">제주</div>
-                            <div class="card_work_time">봉사 시간 : 12:00~18:00</div>
-                        </div>
-                      </a>
-                    </div>
-                  </li>
-
-                  
-
+                   </li>
+                    </c:forEach>
+                    </c:when>
+               <c:otherwise>
+                     <tr>
+                        <td colspan="5" align="center">등록된 게시물이 없습니다.</td>
+                     </tr>
+                  </c:otherwise>
+               </c:choose>
                 </ul>
-
-                <ul class="exchange_list">
-                    <li>
-                      <div class="list_card">
-                        <a href="">
-                          <header style="background-image: url(../img/nogada.jpg)">
-                      
-                            <button class="bookmarkBtn" type="button"></button>
-                          </header>
-                          <div class="body">
-                              <div class="card_position">거기 자네 삽질 잘하는가</div>
-                              <div class="card_deadline">모집중</div>
-                              
-                              <div class="card_work_intensity">업무 강도 : 상</div>
-                              <div class="card_location">강릉</div>
-                              <div class="card_work_time">봉사 시간 : 10:00~14:00</div>
-                          </div>
-                        </a>
-                      </div>
-                    </li>
-  
-                    <li>
-                      <div class="list_card">
-                        <a href="">
-                          <header style="background-image: url(../img/tree.jpg)">
-                      
-                            <button class="bookmarkBtn" type="button"></button>
-                          </header>
-                          <div class="body">
-                              <div class="card_position">야 식목일이다</div>
-                              <div class="card_deadline">모집중</div>
-                              
-                              <div class="card_work_intensity">업무 강도 : 중</div>
-                              <div class="card_location">평택</div>
-                              <div class="card_work_time">봉사 시간 : 10:00~14:00</div>
-                          </div>
-                        </a>
-                      </div>
-                    </li>
-  
-                    <li>
-                      <div class="list_card">
-                        <a href="">
-                          <header style="background-image: url(../img/fish.jpg)">
-                      
-                            <button class="bookmarkBtn" type="button"></button>
-                          </header>
-                          <div class="body">
-                              <div class="card_position">새우잡이 가보자이</div>
-                              <div class="card_deadline">검토중</div>
-                              
-                              <div class="card_work_intensity">업무 강도 : 최상</div>
-                              <div class="card_location">속초</div>
-                              <div class="card_work_time">봉사 시간 : 01:00~10:00</div>
-                          </div>
-                        </a>
-                      </div>
-                    </li>
-                    
-  
-  
-                    <li>
-                      <div class="list_card">
-                        <a href="">
-                          <header style="background-image: url(../img/gamgle.jpg)">
-                      
-                            <button class="bookmarkBtn" type="button"></button>
-                          </header>
-                          <div class="body">
-                              <div class="card_position">무사 감귤 안따맨?</div>
-                              <div class="card_deadline">마감</div>
-                              
-                              <div class="card_work_intensity">업무 강도 : 중</div>
-                              <div class="card_location">제주</div>
-                              <div class="card_work_time">봉사 시간 : 12:00~18:00</div>
-                          </div>
-                        </a>
-                      </div>
-                    </li>
-  
-                    
-  
-                  </ul>
-
-                  <ul class="exchange_list">
-                    <li>
-                      <div class="list_card">
-                        <a href="">
-                          <header style="background-image: url(../img/nogada.jpg)">
-                      
-                            <button class="bookmarkBtn" type="button"></button>
-                          </header>
-                          <div class="body">
-                              <div class="card_position">거기 자네 삽질 잘하는가</div>
-                              <div class="card_deadline">모집중</div>
-                              
-                              <div class="card_work_intensity">업무 강도 : 상</div>
-                              <div class="card_location">강릉</div>
-                              <div class="card_work_time">봉사 시간 : 10:00~14:00</div>
-                          </div>
-                        </a>
-                      </div>
-                    </li>
-  
-                    <li>
-                      <div class="list_card">
-                        <a href="">
-                          <header style="background-image: url(../img/tree.jpg)">
-                      
-                            <button class="bookmarkBtn" type="button"></button>
-                          </header>
-                          <div class="body">
-                              <div class="card_position">야 식목일이다</div>
-                              <div class="card_deadline">모집중</div>
-                              
-                              <div class="card_work_intensity">업무 강도 : 중</div>
-                              <div class="card_location">평택</div>
-                              <div class="card_work_time">봉사 시간 : 10:00~14:00</div>
-                          </div>
-                        </a>
-                      </div>
-                    </li>
-  
-                    <li>
-                      <div class="list_card">
-                        <a href="">
-                          <header style="background-image: url(../imgs/fish.jpg)">
-                      
-                            <button class="bookmarkBtn" type="button"></button>
-                          </header>
-                          <div class="body">
-                              <div class="card_position">새우잡이 가보자이</div>
-                              <div class="card_deadline">검토중</div>
-                              
-                              <div class="card_work_intensity">업무 강도 : 최상</div>
-                              <div class="card_location">속초</div>
-                              <div class="card_work_time">봉사 시간 : 01:00~10:00</div>
-                          </div>
-                        </a>
-                      </div>
-                    </li>
-                    
-  
-  
-                    <li>
-                      <div class="list_card">
-                        <a href="">
-                          <header style="background-image: url(../imgs/gamgle.jpg)">
-                      
-                            <button class="bookmarkBtn" type="button"></button>
-                          </header>
-                          <div class="body">
-                              <div class="card_position">무사 감귤 안따맨?</div>
-                              <div class="card_deadline">마감</div>
-                              
-                              <div class="card_work_intensity">업무 강도 : 중</div>
-                              <div class="card_location">제주</div>
-                              <div class="card_work_time">봉사 시간 : 12:00~18:00</div>
-                          </div>
-                        </a>
-                      </div>
-                    </li>
-  
-                    
-  
-                  </ul>
               </div>
+              
+              <!-- 페이징 처리 -->
+            <table style="font-size:1.3rem">
+               <tr align="center" valign="middle">
+                  <td class="web-view" style="padding: 0.75em 0.75em">
+                     <c:if test="${prev}">
+                        <a href="${pageContext.request.contextPath}/board/boardListOk.me2?page=${startPage - 1}">&lt;</a>
+                     </c:if>
+                     <c:forEach var="i" begin="${startPage}" end="${endPage}">
+                        <c:choose>
+                           <c:when test="${not (i eq page)}">
+                              <a href="${pageContext.request.contextPath}/board/boardListOk.me2?page=${i}">
+                                 <c:out value="${i}"/>&nbsp;&nbsp;
+                              </a>
+                           </c:when>
+                           <c:otherwise>
+                                 <c:out value="${i}"/>&nbsp;&nbsp;
+                           </c:otherwise>
+                        </c:choose>
+                     </c:forEach>
+                     <c:if test="${next}">
+                        <a href="${pageContext.request.contextPath}/board/boardListOk.me2?page=${endPage + 1}">&gt;</a>
+                     </c:if>
+                  </td>
+               </tr>
+            </table>
             </article>
             
             </div>
@@ -394,11 +202,12 @@
           </div>
         </div>
       </inner>
-      <footer class="Footer_footerClass__OWEZy">
+      
+      <!-- <footer class="Footer_footerClass__OWEZy">
         <div class="Footer_rowClass__bFAtS">
           <div class="NavLinks_NavLinks__xaNkJ">
             <div class="NavLinks_NavLinks__logo__MCbfZ">
-              <!--이곳에 기업의 로고가 들어갑니다-->
+              이곳에 기업의 로고가 들어갑니다
               <img
                 src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fuserweb%2Flogo_wanted_black.png&amp;w=110&amp;q=100"
                 alt="wanted"
@@ -541,8 +350,8 @@
           </div>
         </div>
       </footer>
-    </div>
-
+    </div> -->
+    
 <!--footer 적용 시작-->
 <footer class="Footer_footerClass__OWEZy">
   <div class="Footer_rowClass__bFAtS">
@@ -550,7 +359,7 @@
       <div class="NavLinks_NavLinks__logo__MCbfZ">
         <!--이곳에 기업의 로고가 들어갑니다-->
         <img
-          src="../img/hot6.jpg"
+          src="${pageContext.request.contextPath}/assets/images/hot6.jpg"
           alt="wanted"
           style="width: 80px; height: 50px;"
         />  
@@ -649,6 +458,8 @@
   </div>
 </footer>
 <!--footer 적용 끝-->
-
   </body>
+<%--   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <script>let contextPath = "${pageContext.request.contextPath}"</script>
+  <script src="${pageContext.request.contextPath}/assets/js/exchange/board.js"></script> --%>
 </html>

@@ -3875,6 +3875,7 @@ button.list-group-item-danger.active:focus {
 }
 .main__Category {
   position: relative;
+  margin-top: 10px;
 }
 .main__More__DGpTd {
   display: -ms-flexbox;
@@ -6630,4 +6631,7 @@ a:focus {
   :root {
     --nav-height: 110px;
   }
+}
+
+.no_content_innerText{
 }

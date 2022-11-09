@@ -62,41 +62,26 @@
                             <p data-testid="Typography" color="var(--theme-palette-colors-gray-500)" class="css-1gakm8s">또는</p>
                             <!-- 다른 플랫폼 버튼 -->
                             <div class="css-oaesky">
-                                <button type="button" data-attribute-id="signupLogin__start" data-method="kakao" class="css-pmoqnk" onclick="location.href='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=8ee0eac3dabf6eb3674563704660dd75&redirect_uri=http://localhost:8085/web/user/signupLogin.me
-
-'">
-                                    <span class="css-1ihsymv">
-                                        <img src="${pageContext.request.contextPath}/assets/images/kakao.jpg">
-                                    </span>
-                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1k09ww9">
-                                        Kakao
-                                    </p>
-                                    
-                                </button>
-                                <button type="button" data-attribute-id="signupLogin__start" data-method="facebook" class="css-pmoqnk">
-                                    <span class="css-1ihsymv">
-                                        <img src="${pageContext.request.contextPath}/assets/images/facebook.jpg">
-                                    </span>
-                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1k09ww9">
-                                        Facebook
-                                    </p>
-                                </button>
-                                <button type="button" data-attribute-id="signupLogin__start" data-method="google" class="css-15tdtnf">
-                                    <span class="css-1ihsymv">
-                                        <img src="${pageContext.request.contextPath}/assets/images/google.jpg">
-                                    </span>
-                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1k09ww9">
-                                        Google
-                                    </p>
-                                </button>
-                                <button type="button" data-attribute-id="signupLogin__start" data-method="apple" class="css-pmoqnk">
-                                    <span class="css-1ihsymv">
-                                        <img src="${pageContext.request.contextPath}/assets/images/apple.jpg">
-                                    </span>
-                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1k09ww9">
-                                        Apple
-                                    </p>
-                                </button>
+                            	<div class="kakaoButton" style="margin: 0 auto; margin-right: 20px;">
+	                                <button type="button" data-attribute-id="signupLogin__start" data-method="kakao" class="css-pmoqnk">
+	                                    <span class="css-1ihsymv">
+	                                        <img src="${pageContext.request.contextPath}/assets/images/kakao.jpg">
+	                                    </span>
+										<p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1k09ww9">
+	                                        Kakao
+	                                   	</p>
+	                                </button>
+                                </div>
+                                <div class="googleButton" style="margin: 0 auto; margin-left: 20px;">
+	                                <button type="button" data-attribute-id="signupLogin__start" data-method="google" class="css-15tdtnf">
+	                                    <span class="css-1ihsymv">
+	                                        <img src="${pageContext.request.contextPath}/assets/images/google.jpg">
+	                                    </span>
+	                                    <p data-testid="Typography" color="var(--theme-palette-colors-gray-600)" class="css-1k09ww9">
+	                                        Google
+	                                    </p>
+	                                </button>
+                                </div>
                             </div>
                             <!-- 하단(이용약관, 개인정보처리방침) -->
                             <hr class="css-xxj27e">
@@ -140,4 +125,6 @@
 </body>
 <script src="${pageContext.request.contextPath}/assets/js/user/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/user/emailCheckJs.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/user/kakaoLogin.js"></script>
 </html>

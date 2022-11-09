@@ -1,5 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin">
+	<!--게시글 조회 쿼리 -->
+	<select id = "selectAll" resultType = "adminDTO">
+		select @rownum := @rownum +1 rownumber, a.board_textname , a.user_name , a.board_texttime, board_id  
+		from (select board_id, board_textname,u.user_name, board_texttime from tbl_user u join tbl_board tb where u.user_num =tb.user_num and board_boardtype  ='01' order by board_id desc) a, 	
+		(select @rownum :=0) rownum;
+	</select>
 
+	<!-- 홍보 게시글 쿼리 -->
+	<select id = "selectPromotion" resultType = "adminDTO">
+		select @rownum := @rownum +1 rownumber, a.board_textname , a.user_name , a.board_texttime 
+		from (select board_id, board_textname, u.user_name, board_texttime from tbl_user u join tbl_board tb where u.user_num =tb.user_num and board_boardtype  ='02' order by board_id desc) a, 	
+		(select @rownum :=0) rownum;
+	</select>
+
+	<!-- 리뷰 게시글 쿼리 -->
+	<select id = "selectReview" resultType = "adminDTO">
+		select @rownum := @rownum +1 rownumber, a.board_textname , a.user_name , a.board_texttime 
+		from (select board_id, board_textname, u.user_name, board_texttime from tbl_user u join tbl_board tb where u.user_num =tb.user_num and board_boardtype  ='03' order by board_id desc) a, 	
+		(select @rownum :=0) rownum;
+	</select>
+
+	<!-- 관리자 게시판 등록 쿼리 -->
+	<insert id = "insertBoard" parameterType = "adminVO">	
+	INSERT INTO hot6else.tbl_notice
+	(no_textname, no_maintext, no_texttime, no_writer)
+	VALUES(#{boardTextName}, #{boardMainText}, sysdate(), 'admin');
+	</insert>
+	
+	<select id = "mainNotice" resultType = "noticeVO">
+		select no_id , no_textname , no_maintext , no_texttime  from tbl_notice tn order by no_texttime desc 
+	</select>
+
+	<select id ="selectNotice" resultType = "noticeVO">
+		select @rownum := @rownum +1 no_rowNum, a.no_textName , a.no_maintext , a.no_textTime, no_writer, no_id  
+		from (select no_id, no_textName, no_maintext, no_textTime, no_writer from tbl_notice order by no_textTime desc) a, 	
+		(select @rownum :=0) rownum;
+
+	</select>	
+	
+	<select id = "mainAdmNotice" resultType = "adminVO">
+		select board_textname , board_texttime from tbl_board tb order by board_texttime desc ;
+	</select>
+
+	<select id = "mainInquiry" resultType = "inquiryVO">
+		select iq_textname, iq_texttime, iq_id from tbl_inquiry order by iq_texttime desc
+	</select>
+
+	<select id = "selectInquiry" resultType = "inquiryDTO">
+		select iq_id , iq_textname, iq_texttime , iq_answerYN , user_name from tbl_user u join tbl_inquiry ti
+		where u.user_num = ti.user_num order by iq_texttime desc
+	</select>
+
+	<select id = "selectAllUser" resultType = "userDTO">
+		select user_name, user_email, user_since ,user_point,user_trust, user_phonenum, user_address from tbl_user tu
+	</select>
+	 
+	<select id = "selectUserCount" resultType = "_int">
+		select count(user_name) total from tbl_user
+	</select>
+	
+	<select id = "detailInquiry" resultType = "inquiryDTO">
+	select iq_id, iq_textname , iq_maintext , iq_texttime , u.user_num, u.user_name  
+	from tbl_user u join tbl_inquiry ti where iq_id = #{iqId} and u.user_num =ti.user_num ;
+	</select>
+	
+	<select id = "detailNotice" resultType = "noticeVO">
+		select no_textname , no_maintext , no_texttime  from tbl_notice where no_id = #{no_id}
+	</select>
+	
+	<select id = "todayInquiry" resultType = "_int">
+		select count(iq_id) from tbl_inquiry ti where  DATE_FORMAT(iq_texttime,'%Y-%m-%d') =  DATE_FORMAT( sysdate(),'%Y-%m-%d')
+	</select> 
+	
+	<select id = "monthInquiry" resultType = "_int">
+		select count(iq_id) from tbl_inquiry ti where  DATE_FORMAT(iq_texttime,'%Y-%m-%d') between #{month} and  DATE_FORMAT( sysdate(),'%Y-%m-%d')
+	</select>
+	<select id ="todaySign" resultType = "_int">
+		select count(user_num) from tbl_user tu where  DATE_FORMAT(user_since,'%Y-%m-%d') =  DATE_FORMAT( sysdate(),'%Y-%m-%d')
+	</select>
+	
+	<select id ="monthSign" resultType = "_int">
+		select count(user_num) from tbl_user tu where  DATE_FORMAT(user_since,'%Y-%m-%d')  between #{month} and  DATE_FORMAT( sysdate(),'%Y-%m-%d');
+	</select>
+	
+	<select id = "todayBoard" resultType = "_int">
+		select count(board_id) from tbl_board tb where  DATE_FORMAT(board_texttime ,'%Y-%m-%d') =  DATE_FORMAT( sysdate(),'%Y-%m-%d')
+	</select>
+	
+	<select id = "monthBoard" resultType ="_int">
+		select count(board_id) from tbl_board tb where  DATE_FORMAT(board_texttime ,'%Y-%m-%d') between #{month} and  DATE_FORMAT( sysdate(),'%Y-%m-%d')
+	</select>
+	
+	<select id = "todayParti" resultType = "_int">
+		select count(parti_idnum) from tbl_parti tp where DATE_FORMAT(parti_time,'%Y-%m-%d') =  DATE_FORMAT( sysdate(),'%Y-%m-%d')
+	</select>
+
+	<select id = "monthParti" resultType = "_int">
+		select count(parti_idnum) from tbl_parti tp where DATE_FORMAT(parti_time,'%Y-%m-%d') between #{month} and  DATE_FORMAT( sysdate(),'%Y-%m-%d')
+	</select>
 </mapper>

@@ -17,7 +17,11 @@
     /* height: 80px; */
     
 }
-
+button{
+	border :0;
+	outline : 0;
+	background-color: #353535;
+}
 .admin_notice {
     /* border: 1px solid red; */
     height: 40px;
@@ -117,7 +121,7 @@
 }
 
 .title_date {
-    min-width: 120px;
+    min-width: 220px;
     display: table-cell;
     vertical-align: middle;
     text-align: right;

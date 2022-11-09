@@ -42,13 +42,11 @@
 
 .user_info_wrapper {
     /* border: 1px solid salmon; */
-    padding-left: 50px;
     position: relative;
 }
 
 .check {
-    width: 70px;
-    padding-left: 24px;
+
 }
 
 .checkbox {
@@ -69,7 +67,7 @@ input[id="total_check"] {
 .user_info_title{
     padding-top: 9px;
     font-size: 16px;
-    margin-right: 20px;
+    margin-right: 5px;
     width: 120px;
 }
 

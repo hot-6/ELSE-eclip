@@ -7,8 +7,8 @@
 	</select>
 	
 	<insert id="allTermsOk" parameterType="userVO">
-		insert into tbl_user (user_email, user_name, user_phonenum, user_password)
-		values (#{userEmail}, #{userName}, #{userPhonenum}, #{userPw})
+		insert into tbl_user (user_email, user_name, user_phonenum, user_password, user_address)
+		values (#{userEmail}, #{userName}, #{userPhonenum}, #{userPw}, #{userAddress})
 	</insert>
 	
 	<select id="checkPw" parameterType="userVO" resultType="_int">
@@ -20,6 +20,31 @@
 		select count(user_email) from tbl_user
 		where user_password = #{userPw} and user_email = #{userEmail)
 	</select>
+	
+	<select id="getUserNum">
+		select user_num form tbl_user
+		where user_email = #{userEmail}
+	</select>
+	
+	<select id="forSession" parameterType="String" resultType="userVO">
+		select *
+		from tbl_user
+		where user_email = #{userEmail}
+	</select>
+	
+	<select id="signupcheckPw" parameterType="String" resultType="_int">
+		select count(user_num) from tbl_user
+		where  user_password = #{checkUserPw}
+	</select>
+	
+	<select id="getUserName" parameterType="_int" resultType="string">
+      select user_name from tbl_user where user_num = #{userNum}
+   </select>
+   
+   <select id="getUserPhoneNum" parameterType="_int" resultType="string">
+      select user_phonenum from tbl_user where user_num = #{userNum}
+   </select>
+	
 </mapper>
 
 

@@ -31,13 +31,13 @@
   </servlet-mapping>
   
   <servlet>
-  	<servlet-name>Admin</servlet-name>
+  	<servlet-name>Adm</servlet-name>
   	<servlet-class>com.hot6.admin.AdminFrontController</servlet-class>
   </servlet>
   
   <servlet-mapping>
-  	<servlet-name>Admin</servlet-name>
-  	<url-pattern>*.me3</url-pattern>
+  	<servlet-name>Adm</servlet-name>
+  	<url-pattern>*.adm</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -47,7 +47,7 @@
   
   <servlet-mapping>
   	<servlet-name>MyPage</servlet-name>
-  	<url-pattern>*.me4</url-pattern>
+  	<url-pattern>*.pa</url-pattern>
   </servlet-mapping>    
   
   <servlet>

@@ -1,4 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mypage">
+
+   <select id="selectAll" parameterType="_int" resultType="boardVO">
+      select board_textname, board_workhard, board_workarea, board_worktime, board_simpletext
+      from tbl_board where user_num = #{userNum}
+   </select>
+   
+   <select id="interestAll" parameterType="_int" resultType="interestDTO">
+      select distinct b.board_id, board_textname, board_workhard, board_workarea, board_worktime, board_simpletext 
+      from tbl_interest i join tbl_board b where b.user_num = #{userNum}
+   </select>
+   
+   <select id="count" parameterType="_int" resultType="_int">
+      select count(board_id) from tbl_board where user_num = #{userNum}
+   </select>
+   
+   <select id="intercount" parameterType="_int" resultType="_int">
+      select count(interest_idnum) from tbl_interest where user_num = #{userNum}
+   </select>
+   
+   <select id="particount" parameterType="_int" resultType="_int">
+      select count(parti_idnum) from tbl_parti where user_num = #{userNum}
+   </select>
+   
+   <select id="submitAll" parameterType="_int" resultType="partiDTO">
+      select distinct board_textname, board_workhard, board_workarea, board_worktime, board_simpletext 
+      from tbl_board b join tbl_parti p where b.user_num = #{userNum}
+   </select>
+   
+   <select id="informationAll" parameterType="_int" resultType="userVO">
+      select user_name, user_phonenum, user_email, user_address, user_trust
+      from tbl_user where user_num = #{userNum}
+   </select>
+
+   <delete id="delete" parameterType="_int">
+      delete from tbl_board where board_id = #{boardNumber}
+   </delete>
+   <select id="getTotal" resultType="_int">
+      select count(board_id) from tbl_board
+      </select>
+      
+      <select id="selectAllMap" parameterType="map" resultType="boardDTO">
+      select user_name, u.user_num, board_id, board_text_time, board_textname, board_maintext, board_workcg, board_workhard, board_workarea, board_workdate, board_worktime, board_status, board_readcount
+      from tbl_user u join tbl_board b
+      on u.user_num = b.user_num
+      order by board_id desc
+      limit #{startRow}, #{rowCount}
+   </select>
+<!--    <update id="insertAdd" parameterType="_String">
+         update tbl_user set user_address = #{userAddress} where user_num = #{userNum};
+   </update>
+ -->
+   <delete id="userDelete" parameterType="_int">
+      delete from tbl_parti where user_num = #{userNum};
+
+   </delete>
+   <delete id="userDeleter" parameterType="_int">
+      delete from tbl_user where user_num = #{userNum};
+
+   </delete>
+   
+    <insert id="exchangeRegisterOk" parameterType="boardVO">
+      insert into tbl_board (board_textname, board_maintext, board_workhard, board_workarea, board_workdate, board_worktime, user_num)
+      values (#{boardTextName}, #{boardMainText}, #{boardWorkHard}, #{boardWorkArea}, #{boardWorkDate}, #{boardWorkTime}, #{userNum})
+   </insert>
+   
+   <select id="getSequence" resultType="_int">
+      select LAST_INSERT_ID()
+   </select>
+
 </mapper>

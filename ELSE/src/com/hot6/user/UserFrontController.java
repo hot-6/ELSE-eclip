@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hot6.user.CheckIdController;
 import com.hot6.Result;
+import com.hot6.index.MainFirstController;
 
 public class UserFrontController extends HttpServlet{
 	@Override
@@ -79,26 +79,16 @@ public class UserFrontController extends HttpServlet{
 			
 			result = new CheckPwController().execute(req, resp);
 			
-		}else if(target.equals("/user/signupPw.us")) {
-			
-			result = new Result();
-			result.setPath("/web/user/signupPw.jsp");
-			
-		}else if(target.equals("/index/main.in")) {
-			
-			result = new Result();
-			result.setPath("/web/index/main.jsp");
-			
 		}else if(target.equals("/user/signupLogin.us")) {
 			
 			result = new Result();
 			result.setPath("/web/user/signupLogin.jsp");
 			
+		}else if(target.equals("/user/logout.us")) {
+			result = new LogoutController().execute(req, resp);
+		}else if(target.equals("/user/signupcheckPw.us")) {
+			result = new SignupCheckPwController().execute(req, resp);
 		}
-		
-		
-		
-		
 		
 		
 		
